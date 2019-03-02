@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			ul {
+				list-style: none;
+			}
+			
+			li {
+				width: 150px;
+				height: 120px;
+				margin-right: 10px;
+				background-color: aquamarine;
+				float: left;
+			}
+		</style>
+		<script src="js/jquery-1.12.1.js"></script>
+		<script>
+			$(function() {
+				//each()用来遍历jQuery对象的，但是每个对象最开始都是dom对象 需要转变成jQuery对象
+				//参数1：索引 参数2：对象
+				$("#bt>li").each(function(index, ele) {
+					var opacit = (index + 1) / 10;
+					$(ele).css("opacity", opacit);
+				});
+			});
+		</script>
+	</head>
+
+	<body>
+		<ul id="bt">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+			<li>6</li>
+			<li>7</li>
+			<li>8</li>
+			<li>9</li>
+			<li>10</li>
+		</ul>
+	</body>
+
+</html>

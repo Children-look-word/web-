@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#btu{
+				width: 400px;
+				height: 400px;
+				background-color: pink;
+			}
+		</style>
+		<script src="js/jquery-1.12.1.js"> </script>
+		<script>
+			$(function(){
+				$("#ying").click(function(){
+					$("#btu").hide();//隐藏
+				})
+			});
+			$(function(){
+				$("#xian").click(function(){
+					$("#btu").show();//显示
+				})
+			});
+			$(function(){
+				$("#ying").click(function(){
+					$("#btu").slideUp()//划入
+				});
+			});
+			$(function(){
+				$("#xian").click(function(){
+					$("#btu").slideDown()//划出
+				});
+			});
+			$(function(){
+				$("#qie").click(function(){
+					$("#btu").slideToggle()//切换 划入划出
+				});
+			});
+
+
+ 			$(function(){
+ 				$("#ying").click(function(){
+ 					$("#btu").fadeOut()//淡出
+ 				});
+ 			});
+ 			$(function(){
+ 				$("#xian").click(function(){
+ 					$("#btu").fadeIn()//淡入
+ 				});
+ 			});
+ 			$(function(){
+ 				$("#qie").click(function(){
+ 					$("#btu").fadeToggle()//切换 淡入淡出
+ 				});
+ 			});
+			//fade To(时间，透明度的值)；
+		</script>
+	</head>
+	<body>
+		<input type="button" value="隐藏" id="ying" />
+		<input type="button" value="显示" id="xian" />
+		<input type="button" value="切换" id="qie" />
+		<div id="btu"></div>
+	</body>
+</html>

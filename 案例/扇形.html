@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>坐标</title>
+		<style>
+			canvas {
+				border: 1px solid #999999;
+			}
+		</style>
+	</head>
+
+	<body>
+		<canvas width="800" height="600"></canvas>
+		<script>
+			//获取工具
+			var ctx = document.querySelector("canvas").getContext("2d");
+
+			//获取元素的宽 高
+			var w = ctx.canvas.width;
+			var h = ctx.canvas.height;
+
+			//分成几等分
+			var agm = 50;
+			//获取中心圆点坐标
+			var x0 = w / 2;
+			var y0 = h / 2;
+
+			//起始弧度点 和结束弧度点
+			var stc = Math.PI * 2 / agm;
+
+			//随机颜色函数
+
+			var getRandomColor = function() {
+				var r = Math.floor(Math.random() * 256);
+				var g = Math.floor(Math.random() * 256);
+				var b = Math.floor(Math.random() * 256);
+				return "rgb("+r+","+g+","+b+")";
+
+			}
+
+			//循环画圆弧
+			for(var i = 0; i < agm; i++) {
+				var sAngle = i * stc;
+				var eAngle = (i + 1) * stc;
+				ctx.beginPath();
+				//起始点
+				ctx.moveTo(x0, y0);
+				//
+				ctx.arc(x0, y0, 150, sAngle, eAngle);
+				//获取颜色
+				ctx.fillStyle = getRandomColor();
+				//填充颜色
+				ctx.fill()
+			}
+		</script>
+	</body>
+
+</html>

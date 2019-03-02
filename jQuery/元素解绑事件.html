@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#dv {
+				width: 200px;
+				height: 200px;
+				background-color: pink;
+			}
+		</style>
+		<script src="js/jquery-1.12.1.js"></script>
+		<script>
+			//为元素添加事件
+			$(function() {
+				//鼠标移入事件
+				$("#btu1").click(function() {
+					$("#dv").mouseenter(function() {
+						$("#dv").css("background-color", "blue")
+					});
+					//鼠标离开事件
+					$("#dv").mouseleave(function() {
+						$("#dv").css("background-color", "green")
+					});
+				});
+
+				//解绑事件
+				//unbing() 里面可以填多个解绑事件  并且可以解绑 不是bind的事件
+				//如果括号为空 就是解绑所有事件
+				$("#btu2").click(function(){
+					$("#dv").unbind();
+				})
+			});
+			
+			
+//			解绑事件
+//			.off()  父级元素和子级元素所有的事件都解绑
+//			.off("事件")  父级元素和子级元素选定事件
+//			.off("事件 事件")  父级元素和子级元素选定的多个事件
+//          .off("事件","选择器")  解绑选择器的选定事件
+//          .off("事件 事件","选择器")  解绑选择器的多个选定事件
+//          .off("","选择器")  解绑选择器的所有事件
+//			.off("事件"，"**")  解绑所有子元素的选定事件
+		</script>
+	</head>
+
+	<body>
+		<input type="button" value="绑定事件" id="btu1" />
+		<input type="button" id="btu2" value="解绑事件" />
+		<div id="dv"></div>
+	</body>
+
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-1.12.1.js"></script>
+		<script>
+			$(function() {
+				$("#bt").click(function() {
+					//隐藏最后一个元素
+					$("#btu>img:last").hide(600,function f1(){
+						$(this).prev().hide(600,f1);//函数回调；
+					});
+				});
+			});
+			
+			//动画函数
+//			.animate(对象(css的属性),时间,效果(默认是swing(缓动) 也可以是linear(匀速)),动画执行后的函数)
+		</script>
+	</head>
+
+	<body>
+		<input type="button" value="隐藏" id="bt" />
+		<div id="btu">
+			<img src="img/资源 10.png" />
+			<img src="img/资源 5.png" />
+			<img src="img/资源 9.png" />
+			<img src="img/资源 7.png" />
+			<img src="img/资源 6.png" />
+		</div>
+	</body>
+
+</html>

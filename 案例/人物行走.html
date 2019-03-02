@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			canvas {
+				border: 2px solid #CCCCCC;
+				display: block;
+				margin: 100px auto;
+			}
+		</style>
+	</head>
+
+	<body>
+		<canvas width="800" height="600"></canvas>
+		<script>
+			//定义人物函数
+			var person = function(ctx) {
+				this.ctx = ctx || document.querySelector("canvas").getContext("2d");
+				//图片路径
+				this.src = "img/04.png";
+				//画布的大小
+				this.Width = this.ctx.canvas.width;
+				this.Height = this.ctx.canvas.height;
+
+				//走一步的大小
+				this.size = 30;
+				//行走方向 0前 1左 2是右 3是后
+				this.drection=0;
+				
+				//x轴移动步数
+				this.xsize=0;
+				//y轴移动步数
+				this.ysize=0;
+				
+				this.init();
+
+			};
+
+			//人物初始化
+			person.prototype.init = function() {
+				var that = this;
+				this.loading(function(image) {
+					//图片的大小
+					that.imageWidth = image.width;
+					that.imageHeight = image.height;
+
+					//人物的大小
+					that.personWidth = that.imageWidth / 4;
+					that.personHeight = that.imageHeight / 4;
+
+					//图片的中心坐标
+					that.x0 = that.Width / 2 - (that.personWidth / 2);
+					that.y0 = that.Height / 2 - (that.personHeight / 2);
+					//绘制图片
+					that.ctx.drawImage(image,
+						0, 0,
+						that.personWidth, that.personHeight,
+						that.x0, that.y0,
+						that.personWidth, that.personHeight);
+
+					that.index=0
+					//键盘按下事件
+					document.onkeydown = function(e) {
+						console.log(e.keyCode);
+						if(e.keyCode == 40) { //往前走
+							that.ysize++;
+							that.drection=0;
+							that.draw(image);
+						} else if(e.keyCode == 37) { //往左走
+							that.xsize--;
+							that.drection=1;
+							that.draw(image);
+						} else if(e.keyCode == 39) { //往右走
+							that.xsize++;
+							that.drection=2;
+							that.draw(image);
+						} else if(e.keyCode == 38) { //往后走
+							//移动步数
+							that.ysize--;
+							that.drection=3;
+							that.draw(image);
+						}
+					};
+				});
+
+			};
+
+			//执行动画
+			person.prototype.draw = function(image) {
+				this.index++;
+				//先清除画布
+				this.ctx.clearRect(0, 0, this.Width, this.Height);
+				this.ctx.drawImage(image,
+					this.index * this.personWidth, this.drection * this.personHeight,
+					this.personWidth, this.personHeight,
+					this.x0 + this.size * this.xsize, this.y0 + this.size * this.ysize,
+					this.personWidth, this.personHeight);
+				if(this.index >= 3) {
+					this.index = 0;
+				}
+			}
+			//加载图片
+			person.prototype.loading = function(collback) {
+				//定义一个图片对象
+				var image = new Image();
+				image.onload = function() {
+					return collback && collback(image);
+				}
+				image.src = this.src;
+			};
+
+			new person();
+		</script>
+	</body>
+
+</html>

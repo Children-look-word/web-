@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>坐标</title>
+		<style>
+			canvas{
+				border: 1px solid #999999;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas width="800" height="600"></canvas>
+		<script>
+			//获取工具
+			var ctx=document.querySelector("canvas").getContext("2d");
+			//获取元素的高和宽
+			var xlist=ctx.canvas.width;
+			var ylist=ctx.canvas.height;
+			//定义每个网格的大小
+			var gridSize=20;
+			
+			
+			
+			//获取画多少条横线
+			var xTotal=Math.floor(ylist/gridSize);
+			//获取画多少条竖线
+			var yTotal=Math.floor(xlist/gridSize);
+			
+			//横线循环
+			for (var i=0;i<=xTotal;i++) {
+				//从新开辟路径
+				ctx.beginPath();
+				//起始点
+				ctx.moveTo(0,i*gridSize-0.5);
+				//结束点
+				ctx.lineTo(xlist,i*gridSize-0.5);
+				//填充路径颜色
+				ctx.strokeStyle="#CCCCCC";
+				//描边路径
+				ctx.stroke();
+			}
+			
+			//竖线循环
+			for (var i=0;i<=yTotal;i++) {
+				//从新开辟路径
+				ctx.beginPath();
+				//起始点
+				ctx.moveTo(i*gridSize-0.5,0);
+				//结束点
+				ctx.lineTo(i*gridSize-0.5,ylist);
+				//填充路径颜色
+				ctx.strokeStyle="#CCCCCC";
+				//描边路径
+				ctx.stroke();
+			}
+			//x轴
+			ctx.beginPath();
+			//中心坐标点
+			ctx.moveTo(100,500-0.5);
+			ctx.lineTo(600,500-0.5);
+			ctx.strokeStyle="aquamarine";
+			ctx.lineWidth=4;
+			ctx.stroke();
+			
+			ctx.beginPath();
+			ctx.moveTo(600,500-0.5);
+			ctx.lineTo(600-gridSize,499.5+gridSize-5);
+			ctx.lineTo(600-gridSize,499.5-gridSize+5);
+			//填充
+			ctx.fillStyle="aquamarine";
+			ctx.fill();
+			
+			//y轴
+			ctx.beginPath();
+			ctx.moveTo(100,500-0.5);
+			ctx.lineTo(100,100-0.5);
+			ctx.strokeStyle="aquamarine";
+			ctx.lineWidth=4;
+			ctx.stroke();
+			
+			ctx.beginPath();
+			ctx.moveTo(100,100-0.5);
+			ctx.lineTo(100+15,99.5+gridSize);
+			ctx.lineTo(100-15,99.5+gridSize);
+			//填充
+			ctx.fillStyle="aquamarine";
+			ctx.fill();
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

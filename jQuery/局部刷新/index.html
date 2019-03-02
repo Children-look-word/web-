@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<link rel="stylesheet" type="text/css" href="bootstrap.css"/>
+	<link rel="stylesheet" href="nprogress.css"/>
+	<body>
+
+		<div class="container pt-4">
+			<h1>会员中心</h1>
+			<hr>
+			<div class="row">
+				<aside class="col-md-3">
+					<div class="list-group">
+						<a class="list-group-item list-group-item-action" href="index.html">我的资料</a>
+						<a class="list-group-item list-group-item-action" href="cart.html">我的购物车</a>
+						<a class="list-group-item list-group-item-action" href="orders.html">我的订单</a>
+					</div>
+				</aside>
+				<main id="main" class="col-md-9">
+					<h2>我的个人资料</h2>
+					<hr>
+				</main>
+			</div>
+		</div>
+		<script src="../js/jquery-1.12.1.js"></script>
+		<script src="nprogress.js"></script>
+		<script>
+		//局部刷新
+			$(function(){
+				
+				// 顶部刷新
+				$(document)
+					.ajaxStart(function(){
+						console.log("开始啦");
+						NProgress.start()
+					})
+					.ajaxStop(function(){
+						console.log('结束啦');
+						NProgress.done();
+					});
+				
+				
+				
+				$(".list-group-item").click(function(){
+					var path=$(this).attr('href');
+					$('#main').load(path+' #main>*');
+					return false;
+				});
+			});
+		</script>
+	</body>
+
+</html>

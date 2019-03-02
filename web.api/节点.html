@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul id="uu">
+			<li>金克丝</li>
+			<li>小鱼人</li>
+			<li id="qq">小法师</li>
+			<li>加里奥</li>
+			<li>酒桶</li>
+		</ul>
+		
+		<script src="js/属性调用.js" ></script>
+		
+		<script>
+			var uuobj=document.getElementById("uu");
+			//父级节点
+			console.log(uuobj.parentNode);
+			//父级元素
+			console.log(uuobj.parentElement);
+			//子级节点
+			console.log(uuobj.childNodes);
+			//子级元素
+			console.log(uuobj.children);
+			
+			//第一个子节点
+			console.log(uuobj.firstChild);
+			//第一个子元素
+			console.log(uuobj.firstElementChild);
+			
+			//最后一个子节点
+			console.log(uuobj.lastChild);
+			
+			//最后一个子元素
+			console.log(uuobj.lastElementChild);
+			//某个元素前一个兄弟节点
+			console.log(myF("qq").previousSibling);
+			//某个元素前一个兄弟元素
+			console.log(myF("qq").previousElementSibling);
+			//某一个元素下一个兄弟节点
+			console.log(myF("qq").nextSibling);
+			//某一个元素下一个兄弟元素
+			console.log(myF("qq").nextElementSibling);
+			
+			
+			
+			
+		</script>
+		
+	</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style>
+			ol{
+				list-style: none;
+			}
+
+			li{
+				font-size: 50px;
+				top: 20px;
+				margin-left: 20px;
+				cursor: pointer;
+				float: left;
+			}
+			.vv{
+				background-color: aquamarine;
+			}
+		</style>
+	</head>
+	<body>
+		<ol id="dv">
+			<li class="vv">首页</li>
+			<li>关于</li>
+			<li>联系</li>
+			<li>图片</li>
+			<li>活动</li>
+		</ol>
+		<script src="js/属性调用.js"></script>
+		<script>
+			var sp=myF("dv").children;
+			//鼠标移入事件
+			for(var i=0;i<sp.length;i++){
+//				sp[i].setAttribute("index", i);
+				sp[i].onmouseover=function(){
+					for(var j=0;j<sp.length;j++){
+						sp[j].removeAttribute("class");
+					}
+					this.className="vv";
+				};
+			}
+			//鼠标移出事件
+			for(var i=0;i<sp.length;i++){
+//				sp[i].setAttribute("index", i);
+				sp[i].onmouseout=function(){
+					for(var j=0;j<sp.length;j++){
+						sp[j].removeAttribute("class");
+					}
+					myF('dv').children[0].className="vv";
+				};
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			input{
+				width: 200px;
+				height: 200px;
+				background-color: cornflowerblue;
+				text-align: center;
+				font-size: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" value="123" />
+		<input type="button" value="123" />
+		<input type="button" value="123" />
+		<input type="button" value="123" />
+		<input type="button" value="123" />
+		<input type="button" value="123" />
+		<input type="button" value="显示大图" id="yu"/>
+		<img src="img/09-lg.jpg"/ id="fr">
+		<script>
+			var bat=document.getElementsByTagName("input");
+				for(var i=0; i<bat.length;i++){
+					bat[i].onclick=function(){
+						for(var j=0;j<bat.length;j++){
+							bat[j].value="123";
+							bat[j].type="button";
+						}
+						this.value="我喜欢大海";
+						this.type="text";
+					};
+				}
+				
+				
+				
+				function myF(id){
+					return document.getElementById(id);
+				}
+				myF("yu").onclick=function(){
+					myF("fr").src="img/07-lg.jpg";
+				};
+
+		</script>
+		
+	
+		
+		
+	</body>
+</html>

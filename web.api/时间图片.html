@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<img src="img/01-lg.jpg" id="ss" alt=""/>
+		
+		<script src="js/属性调用.js"></script>
+		
+		<script>
+			
+			function gettime(){
+				var dt=new Date;
+				var hours=dt.getHours();
+				var minitues=dt.getMinutes();
+				var second=dt.getSeconds();
+				second=second<10?"0"+second:second;
+				myF("ss").src="img/"+second+"-lg.jpg";
+			}
+			gettime();
+			setInterval(gettime,1000);
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.box {
+				width: 400px;
+				height: 300px;
+				border: 1px solid pink;
+			}
+		</style>
+		<script src="js/jquery-1.12.1.js"></script>
+		<script>
+			$(function() {
+				$("#btu").click(function() {
+					//获取div这个父级元素中所有的子元素（子级元素，孙子元素）
+					$("div span").css("background-color", "red");
+					//获取div这个父级元素中所有子元素 不包括孙子元素
+					$("div>span").css("background-color", "red");
+					//获取div这个元素后面的兄弟元素
+					$("div~span").css("background-color", "red");
+					//获取div这个元素后面的直接兄弟元素
+					$("div+span").css("background-color", "red");
+				});
+			});
+		</script>
+	</head>
+
+	<body>
+		<input type="button" value="点击" id="btu" />
+		<div class="box">
+			<span>这是一个span标签</span>
+			<p>这是一个P标签</p>
+			<ol>
+				<li>1</li>
+				<li>
+					2
+					<span>第二个span标签</span>
+					<span>第三个span标签</span>
+				</li>
+				<li>3</li>
+			</ol>
+			<span>第四个span标签</span>
+		</div>
+	</body>
+
+</html>

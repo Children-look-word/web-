@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value="按钮" id="but"  />
+		<input type="button" value="解除绑定" id="but2"  />
+		<script src="js/属性调用.js"></script>
+		<script>
+		      function addEventListener(element,type,fn){
+                if(element.addEventListener){
+                    element.addEventListener(type,fn,false);
+                }else if(element.attachEvent){
+                    element.attachEvent("on"+type,fn);
+                }else{
+                    element["on"+type]=fn;
+                }
+            }
+		    
+		    function removeEventListener(element,type,fnName){
+		    	if(element.removeEventListener){
+		    		element.removeEventListener(type,fnName,false);
+		    	}else if(element.detachEvent){
+		    		element.detachEvent("on"+type,fnName);
+		    	}else{
+		    		element["on"+type]=null;
+		    	}
+		    }
+		function f1(){
+			console.log("这是第一个");
+		}
+		function f2(){
+			console.log("这是第二个");
+		}
+		addEventListener(myF("but"),"click",f1);
+		addEventListener(myF("but"),"click",f2);
+		
+		myF("but2").onclick=function(){
+			removeEventListener(myF("but"),"click",f1);
+		};
+		</script>
+	</body>
+</html>

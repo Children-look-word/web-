@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			img{
+				width: 200px;
+				height: 300px;
+			}
+			div{
+				position: relative;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" value="动起来" id="btu1" />
+		<input type="button" value="停止" id="btu2" />
+		<div id="dv">
+		    <img src="img/07-lg.jpg"/>
+		    <img src="img/09-lg.jpg"/>
+		</div>
+		<textarea  name="tex" rows="10" cols="20" >
+			我立刻回答了很多事绿卡，的教室里卡建档立卡几十块垃。
+		</textarea>
+		<input type="button" value="我同意这个协议(5)" id="btu3" disabled="disabled"/>
+		<script src="js/属性调用.js"></script>
+		
+		<script>
+		
+			//点击摇起来
+			myF("btu1").onclick=function(){
+				 timeId=setInterval(function(){
+					//随机数
+					var x=parseInt(Math.random()*100+1);
+					var y=parseInt(Math.random()*100+1);
+					myF("dv").style.left=x+"px";
+					myF("dv").style.top=y+"px";
+					
+				},500);
+			};
+			myF("btu2").onclick=function(){
+				clearInterval(timeId);
+			};
+			
+			
+			var tie=5;
+			var tme=setInterval(function(){	
+				tie--;
+				myF("btu3").value="我同意这个协议("+tie+")";
+				if(tie<=0){
+					clearInterval(tme);
+					myF("btu3").disabled=false;
+					myF("btu3").value="同意";
+				}
+			},1000);
+			
+		</script>
+		
+	</body>
+</html>

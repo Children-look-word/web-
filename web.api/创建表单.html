@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>
+		</title>
+		<style>
+			div{
+				width: 200px;
+				height: 300px;
+				background-color: #7FFFD4;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button"  value="创建表单" id="btu">
+		<div id="dv"></div>
+		<script src="js/属性调用.js"></script>
+		<script>
+			var names=["张飞","关羽","刘备","曹操","赵云","黄忠","司马懿"];
+			myF("btu").onclick=function(){
+				var str="<ul style='list-style-type:none; cursor: pointer'>";
+				for(var i=0;i<names.length;i++){
+					str+="<li>"+names[i]+"</li>";
+				}
+				str+="</ul>";
+				myF("dv").innerHTML=str;
+				//获取div里面的每个li标签元素
+				var list=myF("dv").getElementsByTagName("li");
+				//循环遍历
+			    for(var i=0;i<list.length;i++){
+				  list[i].onmouseover=function(){
+					  this.style.backgroundColor="yellow";
+				  };
+				  list[i].onmouseout=function(){
+					  this.style.backgroundColor="";
+				  };
+			    }
+			};
+			
+		</script>
+		
+	</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-1.12.1.js"></script>
+		<script>
+			//attr(参数1，参数2)----设置某个属性的值  attr(参数1)--获取某个参数
+			//参数1：属性的名字   参数2：属性的值
+			//attr  还可以操作元素自带的属性 （HTML中本身就有的属性）
+			$(function(){
+				$("#btu").click(function(){
+					//自定义属性操作 score 是成绩的意思
+					$("#uu>li").attr("score",1000);
+				});
+				$("#btu1").click(function(){
+					//判断是否选中 
+					if($("#ck").prop("checked")){
+						//选中 就执行 不选中代码
+						$("#ck").prop("checked",false);
+					}else{
+						//没选中 就执行选中代码
+						$("#ck").prop("checked",true);
+					}
+				});
+			});
+		</script>
+		<!--//设置获取元素选中的问题 推荐使用prop()方法
+		prop("属性"，值)---一般是布尔类型---目前这么写代码是选中
+		prop("属性")；----获取这个元素是否选中-->
+		
+		
+	</head>
+	<body>
+		<input type="button" value="哈哈" id="btu" />
+		<input type="button" value="选中" id="btu1"  />
+		<input type="checkbox" id="ck"  />玩游戏
+		<ul id="uu">
+			<li>太阳</li>
+			<li>月亮</li>
+			<li>金星</li>
+			<li>水星</li>
+		</ul>
+	</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 1800px;
+				height: 860px;
+				border: 3px solid pink;
+				position: relative;
+				left: 50px;
+				top: 30px;
+			}
+			img{
+				width: 1600px;
+				height: 750px;
+			}
+			#left{
+				font-family: "微软雅黑";
+				font-size: 20px;
+				line-height: 80px;
+				cursor: pointer;
+			}
+			ul{
+				list-style: none;
+				float: left;
+			}
+			#pricet li{
+				position: absolute;
+			}
+		</style>
+		<script src="js/jquery-1.12.1.js"></script>
+		<script>
+			//页面加载事件
+			$(function(){
+				//鼠标移入事件
+				$("#left>li").mouseenter(function(){
+					//获取索引值
+					var index=$(this).index();
+					$(this).css("background-color","cornflowerblue")
+					//先隐藏所有li
+					$("#pricet>li").hide();//隐藏方法
+					//显示当前图片
+					$("#pricet>li:eq("+index+")").show();//显示
+				});
+				//鼠标离开事件
+				$("#left>li").mouseleave(function(){
+					$(this).css("background-color","");
+					
+					var index=$("#left>li").index();
+					
+					$("#pricet>li").hide();//隐藏方法
+					
+					//离开显示第一张
+					$("#pricet>li:eq("+index+")").show();
+				})
+			});
+			
+		</script>
+	</head>
+	<body>
+		<div id="box">
+			<ul id="left">
+				<li>蓝色星空</li>
+				<li>展望未来</li>
+				<li>湖中花朵</li>
+				<li>金属科技</li>
+				<li>坠落星光</li>
+			</ul>
+			<ul id="pricet">
+				<li><a href="#"><img src="img/下载.png" /></a></li>
+				<li><a href="#"><img src="img/tt1.jpg" /></a></li>
+				<li><a href="#"><img src="img/wallhaven-655187.png" /></a></li>
+				<li><a href="#"><img src="img/wallhaven-655725.jpg" /></a></li>
+				<li><a href="#"><img src="img/wallhaven-656580.png" /></a></li>
+			</ul>
+		</div>
+	</body>
+</html>

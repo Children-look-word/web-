@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			ul{
+				list-style: none;
+				
+			}
+			li{
+				float: left;
+				font-size: 50px;
+			}
+		</style>
+		<script src="js/jquery-1.12.1.js"></script>
+		<script>
+			$(function(){
+				$(".bt>li").mouseenter(function(){//鼠标移入事件
+					//找到移入的五角星 设置当前五角星前面所有的兄弟元素都变成当前元素的样子 
+					//后面的兄弟元素还是原来的样子
+					$(this).text("★").prevAll("li").text("★").end().nextAll("li").text("☆");
+				}).click(function(){//鼠标点击事件
+					//为点击元素添加一个自定义属性 并且让其他li标签的自定义属性删除
+					$(this).attr("index","10").siblings("li").remove("index");
+				}).mouseleave(function(){//鼠标移出事件
+					//鼠标移出 所有全都恢复原样
+					$(".bt>li").text("☆");
+					//如果有点击的五角星  鼠标离开后 还是回到 那个带有属性的li中 并且前面的五角星也是实心
+					$(".bt>li[index=10]").text("★").prevAll("li").text("★");
+				});
+			})
+		</script>
+	</head>
+	<body>
+		<ul class="bt">
+			<li>☆</li>
+			<li>☆</li>
+			<li>☆</li>
+			<li>☆</li>
+			<li>☆</li>
+		</ul>
+	</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		<style>
+			div{
+				width: 200px;
+				height: 200px;
+				background-color: bisque;
+			}
+			.cls{
+				background-color: #7FFFD4;
+			}
+			#qq{
+				list-style-type: none;
+				cursor: pointer;
+			}
+			
+			
+		</style>
+	</head>
+	<body>
+		<input type="button"  id="tc" value="隐藏" />
+<!--		<div id=dv></div>-->
+		
+		<div id="oo"></div>
+		<script src="js/属性调用.js"></script>
+		<script>
+			
+			myF("tc").onclick=function(){
+				
+				//判断是否调用啦cls 属性
+                if(myF("oo").className!="cls"){  //调用cls 属性
+                	myF("oo").className="cls";
+                }else{
+                	myF("oo").className="";  //隐藏cls 属性
+                }
+			};
+			
+			
+			
+		</script>
+		<script>
+			
+			// 给ID属性的 元素 注册点击事件  并添加 事件函数
+//			myF("tc").onclick=function(){
+//				if(this.value=="隐藏"){    //显示
+//					myF("oo").style.display="none";
+//					this.value="显示";
+//				}else if(this.value=="显示"){   ///隐藏
+//					myF("oo").style.display="block";
+//					this.value="隐藏";
+//				}
+//				
+//			};
+		</script>
+		
+		<!--阻止链接访问地址 返回false 就可以-->
+		<a href="http://www.baidu.com" id="ck">百度</a>
+		<script>
+			document.getElementById("ck").onclick=function(){
+				alert("叽叽叽叽");
+				return false;
+			};
+		</script>
+		
+		<!-- 显示图片切换路径-->
+		<a href="img/fp_thumb.jpg" id="as"><img src="img/pexels-photo-834964.jpeg" alt=""/></a>
+		<img src="" alt="" id="az"></img>
+		
+		<script>
+			myF("as").onclick=function(){
+				myF("az").src=this.href;
+			    return false;   //阻止链接访问；
+			};
+		</script>
+		
+		
+		<!---  隔行变色 ----->
+		<input type="button"  id="uu" value="隔行变色" />
+		<ul id="pp">
+			<li>假如生活欺骗啦你</li>
+			<li>不要悲伤，不要难过</li>
+			<li>美好的生活</li>
+			<li>还将继续</li>
+			<li>明天会更好</li>
+		</ul>
+		
+		<script>
+			var objGu=myF("pp").getElementsByTagName("li");
+			
+			myF("uu").onclick=function(){
+				for(var i=0; i<objGu.length;i++){
+					objGu[i].style.backgroundColor=i%2==0?"blue":"yellow";
+				}
+			};
+		</script>
+		
+		
+		<!-----鼠标移入显示颜色---->
+		<ul id="qq">
+			<li>假如生活欺骗啦你</li>
+			<li>不要悲伤，不要难过</li>
+			<li>美好的生活</li>
+			<li>还将继续</li>
+			<li>明天会更好</li>
+			<li>雪花</li>
+			<li>百威</li>
+		</ul>
+		
+		<script>
+			
+			//获取li所有标签
+			var tf=document.getElementById("qq").getElementsByTagName("li");
+			for(var i=0;i<tf.length;i++){
+				
+				// 为li注册鼠标移入事件
+				tf[i].onmouseover=function(){
+					this.style.backgroundColor="blue";
+				};
+				//为li注册鼠标移出事件
+				tf[i].onmouseout=function(){
+					this.style.backgroundColor="";
+				};
+			}
+			
+		</script>
+		
+	</body>
+</html>

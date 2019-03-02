@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style>
+			.cls{
+				background-color: black;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" value="关灯" id="btu"  />
+		<script src="js/jquery-1.12.1.js"></script>
+		<script>
+			//根据ID属性值获取按钮 ，祖册点击事件（添加事件的方法 ，调用点击事件的方法）
+			$("#btu").click(function(){
+				//判断value的值
+				//此时this是当前按钮的DOM对象
+				if($(this).val()=="关灯"){
+					//修改body的背景颜色
+					$("body").css("background-color","black");
+					//属性值改为开灯
+					$(this).val("开灯");
+				}else{
+					$("body").css("background-color","");
+					$(this).val("关灯");
+				}
+			});
+			//第二种网页开关灯
+			$(function() {
+				$("#btu").click(function() {
+					//判断页面是否有这个类
+					if($("body").hasClass("cls")) {
+						//有就干点
+						$("body").removeClass("cls");
+					} else {
+						//没有就加上
+						$("body").addClass("cls");
+					}
+				});
+			});
+			
+			//第三种网页开关
+			$(function(){
+				$("#btu").click(function(){
+					//直接切换类样式 有就删 没有就加
+					$("body").toggleClass("cls")
+				})
+			});
+			
+			//页面加载事件 这个最慢
+			$(window).load(function(){
+				console.log("hhh");
+			});
+			$(window).load(function(){
+				console.log("hhh2");
+			});
+			//第二种页面加载事件----比上面的快 加载完页面基本结构 就执行
+			$(document).ready(function(){
+				console.log("3");
+			});
+			//第三种页面加载事件
+			jQuery(function(){
+				console.log("5");
+			});
+			//第四种页面加载事件
+			$(function(){
+				console.log("6");
+			});
+		</script>
+	</body>
+</html>

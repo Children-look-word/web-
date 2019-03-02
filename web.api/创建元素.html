@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div{
+				width: 300px;
+				height: 400px;
+				border: 2px dashed pink;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button"  value="创建表单" id="btu">
+		<div id="dv"></div>
+		<script src="js/属性调用.js"></script>
+		<script>
+			myF("btu").onclick=function(){
+				//创建元素 
+				var pObj=document.createElement("p");
+				//添加内容
+				pObj.innerText="这是一个p";
+				//把创建后的子元素追加到父元素中
+				myF("dv").appendChild(pObj);
+			};
+			
+		</script>
+	</body>
+</html>

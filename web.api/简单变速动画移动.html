@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			input{
+				margin-top: 20px;
+				margin-left: 10px;
+			}
+			div{
+				width: 300px;
+				height: 200px;
+				background-color: pink;
+				margin-top: 20px;
+				position: absolute;
+				left: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" value="移动400px" id="btu" />
+		<input type="button" value="移动800px" id="btu1" />
+		<div id="dv"></div>
+		<script src="js/属性调用.js"></script>
+		<script>
+			
+			myF("btu").onclick=function(){
+				animate(myF("dv"),400);
+			};
+			myF("btu1").onclick=function(){
+				animate(myF("dv"),800);
+			};
+			//动画移动函数
+			function animate(element,target){
+				clearInterval(element.etr);
+				element.etr=setInterval(function(){
+					//获取当前元素的位置
+					var current=element.offsetLeft;
+					var step=(target-current)/10;
+					//判断是大于零 就往前取整数 小于零往后取整数
+					step=step>0?Math.ceil(step):Math.floor(step);
+					current+=step;
+					
+					//移动的距离
+					element.style.left=current+"px";
+					//判断当前位置是否达到目标位置
+					if(current==target){
+						//清除动画
+						clearInterval(element.etr);
+					}
+					//检测代码
+					console.log("目标位置:"+target+",当前位置："+current+",移动啦多少步："+step);
+				},20)
+			}
+			
+		</script>
+	</body>
+</html>

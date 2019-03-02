@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-1.12.1.js"></script>
+		<script>
+			$(function(){
+				$("#btu").click(function(){
+					//获取当前元素前一个兄弟元素
+					$("#fruit").prev().css("background-color","pink");
+					//获取当前元素前面所有的兄弟元素
+					$("#fruit").prevAll().css("background-color","pink");
+					//获取当前元素后面一个兄弟元素
+					$("#fruit").next().css("background-color","pink");
+					//获取当前元素后面所有的兄弟元素
+					$("#fruit").nextAll().css("background-color","pink");
+					//获取当前元素的父级元素
+					$("#fruit").parent().css("background-color","pink");
+					
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<input type="button" value="按钮" id="btu"  />
+		<ul>
+			<li>苹果</li>
+			<li>香蕉</li>
+			<li>橙子</li>
+			<li id="fruit">蜜桔</li>
+			<li>西瓜</li>
+			<li>菠萝</li>
+			<li>葡萄</li>
+			<li>哈密瓜</li>
+		</ul>
+	</body>
+</html>

@@ -1,0 +1,526 @@
+#go{
+	width: 100px;
+	height: 100px;
+	position: fixed;
+	right: 40px;
+	top: 30px;
+	cursor: pointer;
+	border-radius: 50%;
+	z-index: 1000;
+}
+#more{
+	position: fixed;
+	bottom:80px;
+	right:60px;
+	cursor: pointer;
+	z-index: 1000;
+	animation: more 0.6s linear infinite alternate;
+}
+.geju{
+	width: 1300px;
+	height: 850px;
+	position: absolute;
+	background-color: rgba(0,0,0,0.1);
+	bottom: 0;
+	left: 50%;
+	margin-left: -650px;
+}
+.section1{
+	background: url(../img/01-bg.png)  no-repeat center bottom;	
+	background-size: contain;
+}
+.fly{
+	position: absolute;
+	right: -50px;
+	/*调用动画函数*/
+	animation: fly 1s linear infinite alternate; /*lifinite:无穷次 alternate:逆播放*/
+}
+.good{
+	text-align: center;
+	margin-top: 300px;
+}
+.sofa{
+	position: absolute;
+	left: 400px;
+	top: 300px;
+	animation: sofa 1.2s linear infinite alternate;
+	
+}
+/*定义一个动画函数*/
+@keyframes fly{
+	from{
+		/*设置元素上下移动*/
+		transform: translateY(-30px);
+	}
+	to{
+		transform:translateY(30px);
+	}
+}
+@keyframes more{
+	from{
+		/*设置元素上下移动*/
+		transform: translateY(-20px);
+	}
+	to{
+		transform:translateY(20px);
+	}
+}
+@keyframes sofa{
+	from{
+		/*设置元素上下移动*/
+		transform: translateY(-40px);
+	}
+	to{
+		transform:translateY(40px);
+	}
+}
+.section2 {
+	background: url(../img/02-bg.png) no-repeat center bottom;
+	background-size: cover;
+}
+.section2 .sofa1{
+	position: absolute;
+	transform: scale(0.8);
+	left: 460px;
+	top:170px;
+	opacity: 0;
+}
+.section2 .goods{
+	position: absolute;
+	transform: scale(1.6);
+	transform-origin: left top;
+	left: 300px;
+	bottom: 450px;
+	transform: scale(0);
+}
+.input {
+	text-align: center;
+	position: absolute;
+	left: 860px;
+	opacity: 0;
+}
+.input .key{
+	position: absolute;
+	left: 90px;
+	top: 104px;
+	opacity: 0;
+}
+.input .search{
+	position: absolute;
+	top: 100px;
+	
+}
+.geju .text{
+	text-align: center;
+}
+.text .text1{
+	position: absolute;
+	opacity: 0;	
+}
+/*一个文字脱离文档流 另一端文字居中对齐*/
+.text .text2{
+		
+}
+.section2.new .text .text1{
+	position: static;
+	opacity: 1;	
+	transition: opacity 1s;
+}
+.section2.new .text .text2{
+	position: absolute;
+	opacity: 0;	
+}
+.section2.new .input{
+	/*动画最后停在结束为止  backward 回到开始位置*/
+	animation: more1 3s forwards ;
+}
+
+.section2.new .input .key{
+	opacity: 1;
+	transition: all 1s linear 1s;
+}
+
+.section2.new .goods{
+	transform: scale(1.6);
+	transition: all 1s linear 2s ;
+}
+
+@keyframes more1{
+	0%{
+		transform: translate(2000px,210px);
+		opacity: 1;
+	}
+	33.33%{
+		transform: translate(-280px,210px)
+	}
+	66.67%{
+		transform: translate(-280px,210px)
+	}
+	100%{
+		opacity: 1;
+	}
+}
+.section2.add .sofa1{
+	animation: sofa1 1s linear ;
+}
+@keyframes sofa1{
+	from{
+		opacity: 1;
+	}
+	to{
+		opacity: 1;
+		transform: translate(-100px,1060px);
+		z-index: 1000;
+	}
+}
+.geju1{
+	width: 1300px;
+	height: 850px;
+	background-color: rgba(0,0,0,.1);
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	margin-left: -650px;
+	background: url(../img/03-bg.png) no-repeat center bottom;
+	background-size: cover;
+}
+.section3 .car1{
+	position: absolute;
+	right: 380px;
+	bottom: 250px;
+}
+.section3 .change1{
+	position: absolute;
+	right: 300px;
+	bottom: 320px;
+}
+.section3 .car2{
+	position: absolute;
+	right: 380px;
+	bottom: 250px;
+	opacity: 0;
+}
+.section3 .change2{
+	position: absolute;
+	right: 300px;
+	bottom: 320px;
+	opacity: 0;
+}
+.section3 .sofa3{
+	position: absolute;
+	top: 293px;
+	left:359px;
+	opacity: 0;
+}
+.section3.new .sofa3{
+	opacity: 1;
+	z-index: 1002;
+}
+.section3.new .car1{
+	opacity: 0;
+}
+.section3.new .change1{
+	opacity: 0;
+}
+.section3.new .car2{
+	opacity: 1;
+}
+.section3.new .change2{
+	opacity: 1;
+}
+.section4{
+	background: url(../img/04-bg.png) no-repeat center bottom;
+	background-size: cover;
+}
+.section4 .clond{
+	position: absolute;
+	top: 50px;
+	left: -100px;
+	animation: clond04 14s linear infinite alternate;
+}
+@keyframes clond04{
+	from{
+		
+	}
+	to{
+		transform: translateX(1600px);
+	}
+}
+.section4 .bus .bus1{
+	position: absolute;
+	top: 420px;
+	left: 440px;
+	z-index: 1010;
+}
+.section3.leaved .sofa3{
+	animation: sofa2 0.99s linear;
+}
+@keyframes sofa2{
+	from{
+
+	}
+	to{
+		transform: translate(260px,1060px) rotate(45deg);
+	}
+}
+.section4 .geju .sofa2{
+    position: absolute;
+    top: 417px;
+    left: 618px;
+    transform: rotate(45deg);
+    opacity: 0;
+}
+.section4.new .sofa2{
+	    opacity: 1;
+}
+.section4.new .bus{
+	animation: move 3s linear forwards;
+}
+.section4 .chance{
+	position: relative;
+	top: 150px;
+	text-align: center;
+}
+.section4 .chance1{
+
+}
+.section4 .chance2{
+	position: absolute;
+	opacity: 0;
+}
+.section4.new .chance1{
+	position: absolute;
+	opacity: 0;
+	transition: all 1s linear 2s;
+}
+.section4.new .chance2{
+	position: static;
+	opacity: 1;
+	transition: all 2s linear 4s;
+}
+
+.section4 .address1{
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	top: 290px;
+	z-index: 100;
+	opacity: 0;
+}
+
+.section4 .address2{
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	bottom: 350px;
+	opacity: 0;
+}
+.section4.new .address1{
+	opacity: 1;
+	transition: opacity 2s linear 5s;
+}
+.section4.new .address2{
+	opacity: 1;
+	transition: opacity 1s linear 3s;
+}
+
+@keyframes move{
+	from{}
+	to{
+		transform: translateX(1200px);
+	}
+}
+
+.section5{
+	background:url(../img/05-bg.png) no-repeat center bottom;
+}
+
+.section5 .mouse{
+	width: 500px;
+	height: 100%;
+	position: absolute;
+	right: 0;
+	top: 0px;
+	overflow: hidden;
+}
+.section5 .mouse2{
+	position: absolute;
+	top: -240px;
+	left: 0;
+	opacity: 0;
+}
+.section5 .mouse1{
+	position: absolute;
+	top: -240px;
+	left: 0;
+}
+.section5.new .mouse2{
+	opacity: 1;
+	transition: all 0.2s linear 1s;
+}
+.section5 .hand{
+	position: absolute;
+	bottom: 100px;
+	right: 340px;
+	transform: translateY(800px);
+}
+.section5.new .hand{
+	animation: hand 1s linear forwards;
+}
+@keyframes hand{
+	from{
+		
+	}
+	to{
+	    transform: translateY(0);
+	}
+}
+.section5 .card{
+	position: absolute;
+	top: 280px;
+	left: 180px;
+	z-index: 1;
+}
+.section5 .order{
+	position: absolute;
+	top: 280px;
+	left: 280px;
+}
+.section5.new .order{
+	transform: translateY(-100px);
+	transition: all 1s linear 2.7s;
+}
+.section5 .sof5{
+	position: absolute;
+	top: 410px;
+	left: 270px;
+	opacity: 0;
+}
+.section5.new .sof5{
+	animation: sof5 2.5s linear 1.2s  forwards;
+}
+@keyframes sof5{
+	from{
+        transform: translateY(-1000px) rotate(30deg);
+        opacity: 1;
+    }
+    50%{
+        transform: translateY(0) rotate(30deg);
+    }
+    100%{
+        opacity: 1;
+        transform:rotate(30deg);
+    }
+}
+.section5.leaved .sof5{
+     animation: sofa05-06 1.2s linear 1s;
+     z-index: 1;
+}
+@keyframes sofa05-06{
+	from{
+		opacity: 1;
+	}
+	to{
+		opacity: 1;
+		transform: translateY(670px) scale(0.2);
+	}
+}
+
+.section6{
+	background: url(../img/06-bg.png) no-repeat 25% bottom;
+	background-size: cover;
+}
+.section6.new{
+	transition: background 2s linear 2.2s;
+	background: url(../img/06-bg.png) no-repeat 100% bottom;
+	background-size: cover;
+}
+
+.section6 .cloud img:first-child{
+	animation: cloud6 30s linear infinite alternate;
+
+}
+.section6 .cloud img:last-child{
+	animation: cloud6 20s linear infinite alternate;
+}
+@keyframes cloud6{
+	from{}
+	to{
+		transform: translateX(1200px);
+	}
+}
+
+.section6 .box1{
+	position: absolute;
+	top: 180px;
+	left: 310px;
+	z-index: 2;
+	opacity: 0;
+}
+
+.section6.new .box1{
+	animation: box06 2s linear 0.2s;
+}
+@keyframes box06 {
+    from{
+    	opacity: 1;
+        transform: translateX(-500px);
+    }
+    50%{
+    	opacity: 1;
+        transform: none;
+    }
+    to{
+    	opacity: 1;
+        transform:translateY(600px) scale(0.3);
+    }
+}
+.section6 .txte1{
+	position: absolute;
+	top: 50px;
+	left: 260px;
+}
+.section6 .txte2{
+	opacity: 0;
+}
+.section6 .carimg{
+	position: absolute;
+	bottom: 0;
+	left: 275px;
+	z-index: 4;
+}
+.section6 .addres{
+	position: absolute;
+	left: 480px;
+	bottom: 120px;
+	opacity: 0;
+}
+.section6 .worker{
+	position: absolute;
+	left: 230px;
+	bottom:0;
+	z-index: 5;
+	transform-origin: left bottom;
+	opacity: 0;
+}
+.section6 .buyer{
+	position: absolute;
+	left: 480px;
+	bottom: 120px;
+}
+.section6 .say{
+	position: absolute;
+	top: 0;
+	right: 0;
+	opacity: 0;
+}
+.section6 .door{
+	position: absolute;
+	right: 200px;
+	bottom: 100px;
+}
+.section6 .person{
+	position: absolute;
+	right: 300px;
+	bottom: 200px;
+}

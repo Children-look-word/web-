@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div{
+				width: 200px;
+				height: 300px;
+				border: 2px dashed red;
+			}
+		</style>
+	</head>
+	<body>
+		
+		
+		<input type="button" value="创建表格" id="but"/>
+		<div id="dv"></div>
+		<script src="js/属性调用.js"></script>
+		<script>
+			var arr=[
+			{name:"百度",href:"http://www.baidu.com"},
+			{name:"谷歌",href:"http://www.google.com"},
+			{name:"优酷",href:"http://www.youku.com"},
+			{name:"爱奇艺",href:"http://www.aiqiyi.com"},
+			{name:"京东",href:"http://www.jd.com"}
+		];
+			myF("but").onclick=function(){
+				//创建表格元素
+				var tableobj=document.createElement("table");
+				//加入div 中
+				myF("dv").appendChild(tableobj);
+				
+				for(var i=0;i<arr.length;i++){
+					var dt=arr[i];//每个对象
+					tableobj.border="1";
+					tableobj.cellpadding="0";
+					tableobj.cellSpacing="0";
+					//创建行元素
+					var trobj=document.createElement("tr");
+					//加入表中
+				    tableobj.appendChild(trobj);
+				    //创建列元素
+				    var td1=document.createElement("td");
+				    td1.innerText=dt.name;
+				    //加入行中
+				    trobj.appendChild(td1);
+				    //创建列元素
+				    var td2=document.createElement("td");
+				    td2.innerHTML="<a href="+dt.href+">"+dt.name+"</a>";
+				    //加入行中
+				    trobj.appendChild(td2);
+				}
+			};
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,94 @@
+ <!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Template • TodoMVC</title>
+		<link rel="stylesheet" href="node_modules/todomvc-common/base.css">
+		<link rel="stylesheet" href="node_modules/todomvc-app-css/index.css">
+		<!-- CSS overrides - remove if you don't need it -->
+		<link rel="stylesheet" href="css/app.css">
+	</head>
+
+	<body>
+		<section class="todoapp" id="app">
+			<header class="header">
+				<h1>todos</h1>
+				<input class="new-todo"  placeholder="What needs to be done?" @keydown.enter="getTxte" @click='handleesc'  v-focus>
+			</header>
+			<!-- This section should be hidden by default and shown when there are todos -->
+			<template v-if='todos.length'>
+				<section class="main">
+					<input  :checked='toggAll' v-model='toggAll' id="toggle-all" class="toggle-all" type="checkbox">
+					<label for="toggle-all">Mark all as complete</label>
+					<ul class="todo-list">
+						<!--
+							
+							
+							dblclick  双击的事件
+							curretedting===item 判断是否是同一个数据
+							
+						-->
+						<li v-for='(item,index) in change' :class="{ completed:item.complete, editing: curretedting===item }">
+							<div class="view">
+								<input class="toggle" type="checkbox" v-model='item.complete'>
+								<label @dblclick='handleditdata(item)'>{{ item.title }}</label>
+								<button class="destroy" @click='removeText(index)'></button>
+							</div>
+							<input class="edit" 
+								v-dbtext='curretedting==item'
+								:value="item.title" 
+								@keydown.enter="handlesaveedit($event,item,index)"
+								@keydown.esc="handleesc"
+							>
+						</li>
+					</ul>
+				</section>
+				<!-- This footer should hidden by default and shown when there are todos -->
+				<footer class="footer">
+					<!-- This should be `0 items left` by default -->
+					<span class="todo-count"><strong>{{ selectedNum }}</strong> item left</span>
+					<!-- Remove this if you don't implement routing -->
+					<ul class="filters">
+						<li>
+							<a :class="{selected: filterText===''}" href="#/">All</a>
+						</li>
+						<li>
+							<a :class="{selected: filterText==='active'}" href="#/active">Active</a>
+						</li>
+						<li>
+							<a :class="{selected: filterText==='completed'}" href="#/completed">Completed</a>
+						</li>
+					</ul>
+					<!-- Hidden if no completed items are left ↓ -->
+					<!-- some 方法 只要有一个条件符合 就返回true  every 必须所有都符合条件 才返回true-->
+					<button class="clear-completed"
+						v-if='todos.some(function(item){  return item.complete })'
+						@click='handleClear'
+					>
+						Clear completed
+					</button>
+				</footer>
+			</template>
+		</section>
+		<footer class="info">
+			<p>Double-click to edit a todo</p>
+			<!-- Remove the below line ↓ -->
+			<p>Template by
+				<a href="http://sindresorhus.com">Sindre Sorhus</a>
+			</p>
+			<!-- Change this out with your name and url ↓ -->
+			<p>Created by
+				<a href="http://todomvc.com">you</a>
+			</p>
+			<p>Part of
+				<a href="http://todomvc.com">TodoMVC</a>
+			</p>
+		</footer>
+		<script src="node_modules/vue/dist/vue.js"></script>
+		<script src="js/app.js"></script>
+
+	</body>
+
+</html>

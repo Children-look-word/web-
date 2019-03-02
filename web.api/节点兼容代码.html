@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul id="qq">
+			<li>one</li>
+			<li>two</li>
+			<li id="aa">three</li>
+			<li>fore</li>
+			<li>five</li>
+		</ul>
+		<script src="js/属性调用.js"></script>
+		
+		<script>
+			//获取任意一个父级元素的第一个子级元素
+			function getFirstElementChild(element) {
+				if(element.firstElementChild){ //支持谷歌火狐浏览器  true
+					return element.firstElementChild;
+				}else{
+					var node=element.firstchild;//获取第一个节点
+					while(node&&node.nodetype!=1){
+						node=node.nextSibling;
+					}
+					return node;
+				}
+			}
+			//获取任意一个父级元素的最后一个元素
+			function getLastElementChild(element) {
+				if(element.lastElementChild){
+					return element.lastElementChild;
+				}else{
+					var node=element.lastchild; //获取最后一个节点
+					while(node&&node.nodetype!=1){
+						node=node.previousSibling;
+					}
+					return node;
+				}
+			}
+		    
+		    addEventListener(myF(""),"click",function(){
+		    	console.log();
+		    })
+		    
+		    console.log(getFirstElementChild(myF("qq")));
+		    console.log(getLastElementChild(myF("qq")));
+
+
+		</script>
+		
+	</body>
+</html>

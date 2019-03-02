@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value="创建" id="but" />
+		<input type="button" value="创建" id="btu" />
+		<div id="dv"></div>
+		<script>
+			document.getElementById("but").onclick=function(){
+				document.write("<p>这是一个p</p>");
+			};
+		
+//			document.write 在页面加载完毕时 通过这种方式创建元素 原来在页
+//			,面上存在的元素全部被干掉
+
+            document.getElementById("btu").onclick=function(){
+		    document.getElementById("dv").innerHTML="<p>了快速搭了快速开机</p>";
+			};
+			
+		</script>
+	</body>
+</html>

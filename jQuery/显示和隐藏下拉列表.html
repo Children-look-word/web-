@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#btu {
+				width: 600px;
+				height: 80px;
+				background-color: pink;
+				position: relative;
+				left: 400px;
+				top: 100px;
+			}
+			
+			ul {
+				list-style: none;
+			}
+			
+			#btu li ul {
+				position: absolute;
+				top: 80px;
+				background-color: pink;
+				margin: 0;
+				padding: 0;
+  					display: none;
+			}
+			
+			#btu>ul>li {
+				float: left;
+				list-style: none;
+			}
+			
+			#btu a {
+				display: block;
+				height: 30px;
+				text-decoration: none;
+				position: relative;
+				left: 60px;
+				color: #000;
+				line-height: 80px;
+				text-align: center;
+				font-size: 20px;
+				margin-right: 60px;
+			}
+		</style>
+		<script src="js/jquery-1.12.1.js"></script>
+		<script>
+			$(function(){
+				//获取鼠标移入事件
+				$("#btu>ul>li").mouseenter(function(){
+					$(this).children("ul").show(200);//show 显示
+				});
+				//鼠标离开事件
+				$("#btu>ul>li").mouseleave(function(){
+					$(this).children("ul").hide(200); //hide隐藏
+				});
+			});
+		</script>
+	</head>
+
+	<body>
+		<div id="btu">
+			<ul>
+				<li>
+					<a href="javascript:void(0)">最帅的男人</a>
+					<ul>
+						<li href="javascript:void(0)">张杰</li>
+						<li href="javascript:void(0)">吴彦祖</li>
+						<li href="javascript:void(0)">成昆</li>
+					</ul>
+				</li>
+				<li>
+					<a href="javascript:void(0)">最好看的女人</a>
+					<ul>
+						<li href="javascript:void(0)">刘岩</li>
+						<li href="javascript:void(0)">刘亦菲</li>
+						<li href="javascript:void(0)">林志玲</li>
+					</ul>
+				</li>
+				<li>
+					<a href="javascript:void(0)">屌丝</a>
+					<ul>
+						<li href="javascript:void(0)">大鹏</li>
+						<li href="javascript:void(0)">王宝强</li>
+						<li href="javascript:void(0)">张宝瑞</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</body>
+
+</html>

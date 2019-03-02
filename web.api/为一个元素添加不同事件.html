@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<input type="button" value="喜欢" id="but" />
+		<script src="js/属性调用.js"></script>
+		<script>
+			//为同一个元素绑定多个不同事件
+			myF("but").onclick = f1;
+			myF("but").onmouseover = f1;
+			myF("but").onmouseout = f1;
+			function f1(e) {
+				console.log(e);
+				switch(e.type) {
+					case "click":
+						alert("喜欢你");
+						break;
+					case "mouseover":
+						this.style.backgroundColor = "red";
+						break;
+					case "mouseout":
+						this.style.backgroundColor = "green";
+						break;
+				}
+
+			}
+			// indexof 计算文本的索引
+			 var str="曾经跨过山和大海";
+			 var index=str.indexOf("大");
+			 console.log(index);
+		</script>
+	</body>
+
+</html>

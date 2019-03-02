@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				position: relative;
+				margin-top: 260px;
+				margin-left: 700px;
+			}
+			#txt{
+				margin-right: 10px;
+				width: 400px;
+				height: 20px;
+				border: 2px solid aqua;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+		    <input type="text" id="txt" />
+		    <input type="button" value="搜索" id="ss" />
+		</div>
+		<script src="js/属性调用.js"></script>
+		<script>
+			var words=["我曾经跨过上和大海","对你的爱不仅仅是喜欢","我爱生活"
+			,"速度快垃圾","速度与激情","对开始啦","我上课了多久啊",
+			"可是大家来看","深刻的理解爱卡"];
+			
+			myF("txt").onkeyup=function(){
+				
+				//每次键盘抬起 判断有没有div 
+				if(myF("dd")){
+					//删除一次
+					myF("box").removeChild(myF("dd"));
+				}
+				
+				//获取文本输入内容
+				var text=this.value;
+				//临时数组 存放数据
+				var sppp=[];
+				//将文本输入的内容与数组中的每个数值对比
+				for(var i=0;i<words.length;i++){
+					//判断输入的文本是否是最开始出现的
+					if(words[i].indexOf(text)==0){
+						//追加到临时数组中
+						sppp.push(words[i]);
+					}
+				}
+				if(sppp.length==0||this.value.length==0){
+					if(myF("dd")){
+						myF("box").removeChild(myF("dd"));
+					}
+					return;	
+				}
+				function f1(){
+					this.style.backgroundColor="red";
+				}
+				function f2(){
+					this.style.backgroundColor="";
+				}
+				
+				//创建div 把它加入ID 为box的div中
+				var dvobj=document.createElement("div");
+				myF("box").appendChild(dvobj);
+				//创建div ID
+				dvobj.id="dd";
+				dvobj.style.width="400px";
+				dvobj.style.border="2px solid green";
+				for(var i=0;i<sppp.length;i++){
+					//创建P 把它放入div中
+					var pobj=document.createElement("p");
+					dvobj.appendChild(pobj);
+					pobj.innerText=sppp[i];
+					pobj.style.margin=0;
+					pobj.style.padding=0;
+					pobj.style.cursor="pointer";
+					pobj.style.marginTop="5px";
+					pobj.style.marginLeft="5px";
+					//添加鼠标事件
+					pobj.onmouseover=f1;
+					
+					pobj.onmouseout=f2;
+				}
+				
+			};
+		</script>
+	</body>
+</html>

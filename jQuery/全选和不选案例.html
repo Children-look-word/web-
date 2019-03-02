@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-1.12.1.js"></script>
+		<script>
+			$(function(){
+				//选中以一个全选 不选 全部不选
+				$("#be").click(function(){
+					//设置复选框的选中状态
+					$("#bt").find("input").prop("checked",$("#be").prop("checked"));
+				});
+				
+				//每个tobody标签都要注册点击事件
+				$("#bt").find("input").click(function(){
+					//先获取所有复选框的个数
+					var cklength=$("#bt").find("input").length;
+					//获取所有选中的复选框的个数 
+					//空格表示的所有的选中标签
+					var checkleng=$("#bt :checked").length;
+					//判断有一个没选 就不要选
+					$("#be").prop("checked",cklength==checkleng);
+				});
+			});
+			
+		</script>
+	</head>
+	<body>
+		<table>
+			<thead>
+				<tr>
+					<th><input type="checkbox"  id="be"/></th>
+					<th>水果</th>
+					<th>城市</th>
+				</tr>
+			</thead>
+			<tbody id="bt">
+				<tr>
+					<td><input type="checkbox" /></td>
+					<td>苹果</td>
+					<td>浙江</td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" /></td>
+					<td>菠萝</td>
+					<td>安徽</td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" /></td>
+					<td>香蕉</td>
+					<td>江西</td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" /></td>
+					<td>葡萄</td>
+					<td>江苏</td>
+				</tr>
+			</tbody>
+		</table>
+	</body>
+</html>

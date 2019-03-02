@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-1.12.1.js"></script>
+		<script>
+			$(function(){
+				
+				//第一种
+				$("#btu").mouseenter(function(){
+					$("#btu").css("background-color","red");
+				});
+				$("#btu").mouseleave(function(){
+					$("#btu").css("background-color","green");
+				});
+				$("#btu").click(function(){
+					alert("hhhhhh");
+				})
+				
+				//第二种
+				$("#btu").bind("mouseenter",function(){
+					$("#btu").css("background-color","red");
+				})
+				$("#btu").bind("mouseleave",function(){
+					$("#btu").css("background-color","green");
+				})
+				//第三种
+				$("#btu").bind({"mouseenter":function(){
+					$("#btu").css("background-color","red");
+				},"mouseleave":function(){
+					$("#btu").css("background-color","green");
+				},"click":function(){
+					alert("hahah");
+				}});
+			});
+			
+			//delegate（ "选择器"  "事件"  事件函数） 为元素绑定事件
+			//on 为元素绑定事件  on("事件" "选择器"  事件函数)
+		</script>
+	</head>
+	<body>
+		<input type="button" value="点击" id="btu">
+	</body>
+</html>

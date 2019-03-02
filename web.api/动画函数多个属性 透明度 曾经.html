@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			div {
+				height: 150px;
+				width: 160px;
+				background-color: pink;
+				position: absolute;
+			}
+		</style>
+
+	</head>
+
+	<body>
+		<input type="button" value="哈哈" id="but" />
+		<div id="dv"></div>
+		<script src="js/属性调用.js"></script>
+		<script>
+			//一个元素的任意一个样式的属性值
+			function getstyle(element, attr) {
+				//判断浏览器是否支持这个方法
+				return window.getComputedStyle ? window.getComputedStyle(element, null)[attr] : element.currentStyle[attr]
+			}
+
+			myF("but").onclick = function() {
+				animate(myF("dv"), {"width": 100,"top": 400,"height": 400,"left": 500,"opacity": 0.4,"zIndex":100},function(){
+					animate(myF("dv"),{"width": 400,"top": 4,"height": 600,"left":10,"opacity": 0.9,"zIndex":200});
+				});
+            };
+            
+            
+            //动画移动函数
+			//attr----属性
+			//ttob----对象
+			//调用函数---fn
+			function animate(element, ttob,fn) {
+				clearInterval(element.etr);
+
+				element.etr = setInterval(function() {
+					//假设全部到达目标
+					var flag = true;
+					//遍历对象
+					for(var attr in ttob) {
+						//判断属性是否是透明度
+						if(attr == "opacity") {
+							//获取元素的透明度 放大一百倍
+							var current=getstyle(element,attr)*100;
+							//目标透明度放大一百倍
+							var target=ttob[attr]*100;
+							var step=(target-current)/10;
+							step=step>0?Math.ceil(step):Math.floor(step);
+							current+=step;
+							element.style[attr] = current/100;
+						} else if(attr=="zIndex") { //判断属性是否是层级
+							element.style[attr]=ttob[attr];
+						} else {
+							//普通属性
+							//获取当前元素的属性
+							var current = parseInt(getstyle(element, attr));
+							//当前属性的目标值
+							var target = ttob[attr];
+							var step = (target - current) / 10;
+							//判断是大于零 就往前取整数 小于零往后取整数
+							step = step > 0 ? Math.ceil(step) : Math.floor(step);
+							current += step;
+							//移动的距离
+							element.style[attr] = current + "px";
+						}
+						//是否达到目标值
+						if(target != current) {
+						   flag = false;
+						}
+					}
+					//判断当前位置是否达到目标位置
+					if(flag) {
+						//清除动画
+						clearInterval(element.etr);
+						//所以属性达到目标才可以使用这个函数，前提用户传入这个函数
+						if(fn){
+						   fn();
+						}
+					}
+					//检测代码
+					console.log("目标位置:" + target + ",当前位置：" + current + ",移动啦多少步：" + step);
+				}, 20)
+			}
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			li {
+				list-style: none;
+				position: absolute;
+				float: left;
+			}
+			
+			img {
+				width: 100%;
+				height: 100%;
+				vertical-align: top;
+			}
+			
+			ol {
+				width: 542px;
+				height: 270px;
+				position: absolute;
+				top: 50px;
+				left: 690px;
+
+			}
+			
+			#dv {
+				width: 600px;
+				position: absolute;
+				left: 690px;
+				top: 150px;
+				z-index: 99;
+			}
+			
+			#left {
+				font-size: 60px;
+				text-decoration: none;
+				position: absolute;
+				top: 8px;
+				left: 10px;
+				outline: none;
+			}
+			
+			#right {
+				position: absolute;
+				top: 8px;
+				right: 10px;
+				font-size: 60px;
+				text-decoration: none;
+				outline: none;
+			}
+		</style>
+		<script src="js/属性调用.js"></script>
+		<script>
+			var tarr = [{
+					
+					width:270,
+					height:138,
+					top: 60,
+					right: -420,
+					opacity: 0.2,
+					zIndex: 2
+				},
+				{
+					width:432,
+					height:216,
+					top: 24,
+					right: -280,
+					opacity: 0.5,
+					zIndex: 4
+				},
+				{
+					width:540,
+					height:270,
+					top:0,
+					right:12,
+					opacity: 1,
+					zIndex: 8
+				},
+				{
+					width:432,
+					height:216,
+					top: 24,
+					right:400,
+					opacity: 0.5,
+					zIndex: 4
+				},
+				{
+					width:270,
+					height:138,
+					top: 60,
+					right:700,
+					opacity: 0.2,
+					zIndex: 2
+				},
+				
+			];
+
+			//页面载入事件
+			window.onload = function() {
+				//假设所有动画执行完毕
+				var flag=true;
+				//获取所有li标签
+				var list = myF("box").getElementsByTagName("li");
+
+				function assign() {
+					for(var i = 0; i < list.length; i++) {
+						//设置每个li,都要把宽,层级,透明度,left,top到达指定的目标位置
+						animate(list[i], tarr[i], function() {
+							flag = true;
+						});
+					}
+				}
+			assign();
+			//右边按钮
+			myF("right").onclick = function() {
+				if(flag) { //==========================================================
+					flag = false;
+					tarr.push(tarr.shift());
+					assign(); //重新分配
+				}
+			};
+			//左边按钮
+			myF("left").onclick = function() {
+				if(flag) { //==========================================================
+					flag = false;
+					tarr.unshift(tarr.pop());
+					assign(); //重新分配
+				}
+			};
+
+			//鼠标移入显示
+			myF("box").onmouseover = function() {
+				animate(myF("dv"), {
+					"opacity": 1
+				});
+			};
+			//鼠标移出隐藏
+			myF("box").onmouseout = function() {
+				animate(myF("dv"), {
+					"opacity": 0
+				});
+			};
+		};
+		</script>
+	</head>
+
+	<body>
+		<div id="box">
+			<ol id="slide">
+				<li>
+					<a href="#"><img src="img/wallhaven-656580.png" /></a>
+				</li>
+				<li>
+					<a href="#"><img src="img/01-lg.jpg" /></a>
+				</li>
+				<li>
+					<a href="#"><img src="img/wallhaven-655187.png" /></a>
+				</li>
+				<li>
+					<a href="#"><img src="img/wallhaven-655725.jpg" /></a>
+				</li>
+				<li>
+					<a href="#"><img src="img/下载.png" /></a>
+				</li>
+			</ol>
+			<div id="dv">
+				<a id="left" href="javacript:">&lt;</a>
+				<a id="right" href="javacript:">&gt;</a>
+			</div>
+		</div>
+	</body>
+
+</html>

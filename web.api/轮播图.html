@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0
+			}
+			
+			ul {
+				list-style: none
+			}
+			
+			img {
+				width: 1800px;
+				height: 900px;
+			}
+			
+			#box {
+				width: 1800px;
+				height: 900px;
+				margin: 10px auto;
+				padding: 5px;
+				border: 1px solid #ccc;
+			}
+			
+			.he {
+				width: 1800px;
+				height: 900px;
+				overflow: hidden;
+				position: relative;
+			}
+			
+			.he ul {
+				width: 10800px;
+				position: absolute;
+			}
+			
+			.he li {
+				float: left;
+			}
+			
+			.sp {
+				position: absolute;
+				right: 80px;
+				bottom: 40px;
+			}
+			
+			.sp span {
+				display: inline-block;
+				border-radius: 20px;
+				width: 30px;
+				height: 30px;
+				margin: 0 4px;
+				background-color: #FAEBD7;
+				text-align: center;
+				line-height: 30px;
+				cursor: pointer;
+			}
+			
+			.sp span.current {
+				background-color: cornflowerblue;
+				color: #FAEBD7;
+			}
+			
+			.sp {
+				clear: both;
+			}
+			
+			.zz span {
+				width: 40px;
+				height: 40px;
+				position: absolute;
+				left: 5px;
+				top: 50%;
+				margin-top: -20px;
+				background: #000;
+				cursor: pointer;
+				line-height: 40px;
+				text-align: center;
+				font-weight: bold;
+				font-family: '黑体';
+				font-size: 30px;
+				color: #fff;
+				/*透明度*/
+				opacity: 0.5;
+				border: 1px solid #fff;
+			}
+			
+			#right {
+				right: 5px;
+				left: auto;
+			}
+			
+			.zz {
+				display: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="box">
+			<div class="he">
+				<ul>
+					<li>
+						<a href="#"><img src="img/下载.png" /></a>
+					</li>
+					<li>
+						<a href="#"><img src="img/tt1.jpg" /></a>
+					</li>
+					<li>
+						<a href="#"><img src="img/wallhaven-655187.png" /></a>
+					</li>
+					<li>
+						<a href="#"><img src="img/wallhaven-655725.jpg" /></a>
+					</li>
+					<li>
+						<a href="#"><img src="img/wallhaven-656580.png" /></a>
+					</li>
+				</ul>
+				<div class="sp">
+					<span class="current">1</span>
+					<span>2</span>
+					<span>3</span>
+					<span>4</span>
+					<span>5</span>
+				</div>
+				<div class="zz" id="zz">
+					<span id="right">&gt;</span>
+					<span id="left">&lt;</span>
+				</div>
+			</div>
+		</div>
+		<script src="js/属性调用.js"></script>
+		<script>
+			//获取最外面的div
+			var box = myF("box");
+			//获取盒子的
+			var he = box.children[0];
+			//获取盒子的宽度
+			var imgwidth = he.offsetWidth;
+			//获取ul
+			var ulobj = he.children[0];
+			//获取ul中所有li
+			var list = ulobj.children;
+			//获取ID 为zz 元素
+			var zz = myF("zz");
+			//获取所有的span标签
+			var spobj = he.children[1].children;
+			console.log(imgwidth);
+			//克隆ul中第一个li 加入ul中最后
+			ulobj.appendChild(ulobj.children[0].cloneNode(true));
+			//全局变量
+			var ptt = 0;
+			//开始的距离
+			var currten = 0;
+			
+			
+			//自动播放
+			var timeID=setInterval(tcc,5000);
+			
+			
+			//鼠标移入显示
+			box.onmouseover = function() {
+				zz.style.display = "block";
+				clearInterval(timeID);
+			};
+			//鼠标移出隐藏
+			box.onmouseout = function() {
+				zz.style.display = "none";
+				timeID=setInterval(tcc,5000);
+			};
+			
+			
+
+			//点击右边按钮事件
+			myF("right").onclick = tcc;
+			function tcc() {
+				if(ptt == list.length - 1) {
+					//第六个图跳转到第一个图
+					ptt = 0;
+					//ul位置还原到开始位置
+					ulobj.style.left = 0 + "px";
+				}
+				ptt++; //迅速加一显示第二张图片
+				animate(ulobj, -ptt * imgwidth); //移动显示为第二张图片
+
+				if(ptt == list.length - 1) {
+					//第五个颜色按钮干掉
+					spobj[spobj.length - 1].className = "";
+					//第一个按钮颜色设置上
+					spobj[0].className = "current";
+				} else {
+					//干掉所有小按钮的颜色
+					for(var i = 0; i < spobj.length; i++) {
+						spobj[i].removeAttribute("class");
+					}
+					//同步按钮添加颜色
+					spobj[ptt].className = "current";
+				}
+
+			};
+
+			//点击左边事件
+			myF("left").onclick = function() {
+				if(ptt == 0) {
+					ptt = 5;
+					//ul回到最后一张图片的位置
+					ulobj.style.left = -ptt * imgwidth + "px";
+				}
+				ptt--;
+				animate(ulobj, -ptt * imgwidth);
+				//干掉所有小按钮的颜色
+				for(var i = 0; i < spobj.length; i++) {
+					spobj[i].removeAttribute("class");
+				}
+				//同步按钮添加颜色
+				spobj[ptt].className = "current";
+
+			};
+
+			//遍历span循环
+			for(var i = 0; i < spobj.length; i++) {
+				//循环的时候把索引值保存在每个span的自定义属性中
+				spobj[i].setAttribute("index", i);
+				//添加鼠标移入事件
+				spobj[i].onmouseover = function() {
+					//先把所有的背景颜色清除
+					for(var j = 0; j < spobj.length; j++) {
+						spobj[j].removeAttribute("class");
+					}
+					//这种span背景颜色
+					this.className = "current";
+
+					//移动ul(每个图片的宽*鼠标放在这个按钮的索引值)
+					//获取当前鼠标进入的span的索引
+					ptt = this.getAttribute("index");
+					animate(ulobj, -ptt * imgwidth);
+				};
+			}
+
+			//动画移动的函数
+			function animate(element, target) {
+				clearInterval(element.etr);
+				element.etr = setInterval(function() {
+					//获取当前元素的位置
+					var current = element.offsetLeft;
+					var step =1800;
+					//判断是前进还是后退
+					step = current < target ? step : -step;
+					current += step;
+					//判断当前位置是否达到目标位置
+					if(Math.abs(target - current) > Math.abs(step)) {
+						//元素每次移动距离
+						element.style.left = current + "px";
+					} else {
+						clearInterval(element.etr);
+						//最终元素到目标位置
+						element.style.left = target + "px";
+					}
+				},100)
+			}
+		</script>
+	</body>
+
+</html>

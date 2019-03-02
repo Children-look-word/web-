@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script>
+			function test(fn) {
+				return function() {
+					var i = 0;
+					var timer = setInterval(function() {
+						console.log(i++);
+						if(i == 5) {
+							clearInterval(timer);
+							if(fn instanceof Function) {
+								setTimeout(fn, 5000);
+							}
+						}
+					}, 200);
+				};
+			}
+			var t = test(test());
+			t();
+		</script>
+	</body>
+
+</html>

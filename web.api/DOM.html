@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value="按钮" id="tc"/>
+		
+		<input  type="button" value="最终事件" id="tg"/>
+		
+		
+		
+		<script>
+			
+			// 根据id属性值 从文档中获取这个元素
+			var obt=document.getElementById("tg");
+			
+			// 为当前这个按钮元素注册点击事件，  添加事件处理函数（匿名函数）
+			obt.onclick=function(){
+				
+				// 事件响应的事情
+				alert("最终的效果");
+			};
+		</script>
+		
+		<script>
+			
+			document.getElementById("tc").onclick=function(){
+				alert("我喜欢看电影");
+			};
+		</script>
+		
+		<input  type="button" value="看啥" id="ba" />
+		<div id="vd">
+			<p>抗裂砂浆到付款了</p>
+			<p>哈哈哈</p>
+			<p>三生三世</p>
+			<p>是是是</p>
+		</div>
+		<script>
+			document.getElementById("ba").onclick=function(){
+				
+				var hh=document.getElementById("vd").getElementsByTagName("p");
+				for(var i=0;i<hh.length;i++){
+					hh[i].innerHTML="我喜欢大海，也喜欢过你";
+				}
+				
+			};
+			
+			
+		</script>
+		
+		<!--点击按钮获取图片-->
+		<input type="button" value="显示图片" id="cc"/>
+		<img src="" id="gc" alt="hhh"  title="gggg"/>
+		<p id="p1">这是一个P标签</p>
+		<script>
+			// 根据id属性值 从文档中获取这个元素
+			let obt1=document.getElementById("cc");
+			obt1.onclick=function(){
+				// 根据id属性值 从文档中获取这个元素
+				let gcObj=document.getElementById("gc")
+				//根据id 获取P标签，设置内容
+				document.getElementById("p1").innerText="这是一个P";
+				//为当前按钮 添加事件路径
+				let ss=document.getElementsByTagName("img");
+				ss[0].alt="爸爸爱你";
+				ss[0].title="爸爸爱你";
+				gcObj.src="img/reindeer9_1x.png";
+				gcObj.width="400";
+				gcObj.height="300";
+
+			};
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#aa{
+				width: 300px;
+				height: 400px;
+				border: 1px solid pink;
+				/*内容自在范围内显示*/
+				overflow: auto;
+			}
+		</style>
+		<script src="js/jquery-1.12.1.js"></script>
+		<script>
+			$(function(){
+				$("#btu").click(function(){
+					//判断元素是否存在  用.length 
+					if($("#uu").length==0){
+						 $("<p id='uu'>哥是你一辈子都得不到的男人</p>").appendTo($("#aa"));
+					}
+					//创建一个p标签
+					 var obj=$("<p>哥是你一辈子都得不到的男人</p>")
+					 //把p标签创建到div中
+					 //父级元素.append(子级元素)
+					 $("#aa").append(obj);
+					 //一直创建
+					 $("<p id='uu'>哥是你一辈子都得不到的男人</p>").appendTo($("#aa"));
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<input type="button" value="创建" id="btu" />
+		<div id="aa"></div>
+	</body>
+</html>

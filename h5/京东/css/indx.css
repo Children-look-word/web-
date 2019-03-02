@@ -1,0 +1,265 @@
+
+.jd_container{
+	min-width: 320px;
+	max-width: 640px;
+	margin: 0 auto;
+}
+.jd_search{
+	width: 100%;
+	height: 40px;
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 1000;
+}
+.jd_search_box{
+	min-width: 320px;
+    max-width: 640px;
+    width: 100%;
+	height: 40px;
+	margin: 0 auto;
+	background: rgba(201,21,35,0);
+	position: relative;
+	
+}
+.jd_search_box .icon_logo{
+	width:60px ;
+	height:36px ;
+	position: absolute;
+	text-align: center;
+	left: 10px;
+	top: 4px;
+	background-position: 0 -104px;
+}
+.jd_search_box .login{
+	width: 50px;
+	height: 40px;
+	position: absolute;
+	right: 0;
+	top: 0;
+	color: white;
+	line-height: 40px;
+	text-align: center;
+}
+.jd_search_box form{
+	width: 100%;
+    padding-left:80px;
+    padding-right:50px;
+    position: relative;
+}
+.jd_search_box form .icon_search{
+	width: 20px;
+    height: 20px;
+    position: absolute;
+    left: 90px;
+    top: 10px;
+    background-position: -60px -109px;
+}
+.jd_search_box input{
+	width: 100%;
+    height: 30px;
+    margin-top:5px;
+    background: #fff;
+    border-radius: 15px;
+    padding-left: 40px;
+}
+/*banner*/
+.jd_banner{
+	width: 100%;
+	position: relative;
+	overflow: hidden;
+}
+.jd_banner ul:first-child{
+	width: 1000%;
+	transform:translateX(-10%);
+	-webkit-transform: translateX(-10%);
+}
+.jd_banner ul:first-child li{
+	width: 10%;
+	float: left;
+}
+.jd_banner ul:first-child li a{
+	display: block;
+	width: 100%;
+}
+.jd_banner ul:first-child li a img{
+	display: block;
+	width: 100%;
+}
+.jd_banner ul:last-child{
+	position: absolute;
+	left: 50%;
+	width: 134px;
+	height: 8px;
+	margin-left:-67px ;
+	bottom: 10px;	
+}
+.jd_banner ul:last-child li{
+	float: left;
+	width: 8px;
+	height: 8px;
+	border: 1px solid #FFFFFF;
+	border-radius: 4px;
+	margin-left: 10px;
+}
+.jd_banner ul:last-child li:first-child{
+	margin-left: 0;
+}
+.jd_banner ul:last-child li.now{
+	background: #FFFFFF;
+}
+
+/*导航栏*/
+.jd_nav{
+	width: 100%;
+	background-color: #FFFFFF;
+	border-bottom: 1px solid #ccc;
+}
+.jd_nav ul{
+	width: 100%;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.jd_nav ul li{
+	width: 25%;
+	float: left;
+}
+.jd_nav ul li a{
+	width: 100%;
+	display: block;
+}
+.jd_nav ul li a img{
+	display: block;
+	width: 40px;
+	height: 40px;
+	margin: 0 auto;
+}
+.jd_nav ul li a p{
+	text-align: center;
+    font-size: 12px;
+    color: #666;
+    padding: 5px 0;
+}
+
+
+/*产品区块*/
+.jd_product{
+	padding: 0 5px;
+}
+.jd_product_box{
+	margin-top: 10px;
+	box-shadow: 0 0 2px #333333;
+	background: #FFFFFF;
+}
+.jd_product_box .title{
+	line-height: 36px;
+	height: 36px;
+	border-bottom: 1px solid #CCCCCC;
+	
+}
+.jd_product_box .title.nb{
+	border-bottom: none;	
+}
+
+.jd_product_box .title h3{
+	font-weight: none;
+	padding-left: 18px;
+	position: relative;
+}
+.jd_product_box .title h3::before{
+	content: "";
+	width: 3px;
+	height: 12px;
+	background: #D8505C;
+	position: absolute;
+	left: 10px;
+	top: 12px ;
+}
+.sk .icon{
+	float: left;
+	width: 16px;
+	height:20px;
+	margin-left: 10px;
+	margin-top: 7px;
+	background: url(../img/seckill-icon.png) no-repeat center/16px 20px;
+}
+.sk .name{
+	float: left;
+	margin-left: 10px;
+	font-size: 14px;
+	color: #D8505C;
+}
+.sk .time{
+	float: left;
+	margin-left: 10px;
+}
+.sk .time span{
+	float: left;
+	width:16px;
+	height:16px;
+	line-height: 16px;
+	color: #FFFFFF;
+	text-align: center;
+	background: #333333;
+	margin-left: 4px;
+	margin-top: 10px;
+}
+.sk .time span:nth-child(3n){
+	background:none;
+	width: 3px;
+	color:#333333;
+}
+
+.con .price{
+	width: 100%;
+	padding: 0 10px;
+}
+.con .price li{
+	width: 33.333%;
+	float: left;
+}
+.con .price li a{
+	display: block;
+	border-right: 1px solid #DDDDDD;
+}
+.con .price li:last-child a{
+	border-right:none;
+}
+.con .price li a img{
+	display: block;
+	width: 64%;
+	margin: 0 auto;
+}
+.con .price li p{
+	text-align: center;
+	font-size: 14px;
+	padding: 5px 0;
+}
+.con .price li .newprice{
+	color: #D8505C;
+}
+.con .price li .oldprice{
+	color: #666;
+	text-decoration: line-through;
+}
+
+/*组合样式*/
+.w_50p{
+    width: 50%;
+    display: block;
+}
+.w_50p img{
+    display: block;
+    width: 100%;
+}
+.bl{
+    border-left:1px solid #ddd;
+}
+.br{
+    border-right:1px solid #ddd;
+}
+.bb{
+    border-bottom:1px solid #ddd;
+}
+
+

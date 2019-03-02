@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			ul {
+				width: 10900px;
+				position: absolute;
+				margin: 0;
+				padding: 0;
+			}
+			li,ol {
+				list-style-type: none;
+			}
+			
+			#box {
+				width: 100%;
+				background-color: pink;
+			}
+			
+			img {
+				width: 1800px;
+				height: 900px;
+			}
+			
+			.xiang li {
+				float: left;
+			}
+			
+			.xiang ol li {
+				width: 40px;
+				height: 40px;
+				background-color: #FAEBD7;
+				line-height: 40px;
+				cursor: pointer;
+				text-align: center;
+				border-radius: 50px;
+				margin-left: 16px;
+			}
+			
+			ol {
+				position: absolute;
+				right: 70px;
+				bottom: 40px;
+			}
+			
+			.xiang {
+				width: 1800px;
+				height: 900px;
+				position: absolute;
+				left: 60px;
+				background-color: #6495ED;
+				overflow: hidden;
+			}
+			
+			ol {
+				clear: both;
+			}
+			
+			#left {
+				width: 40px;
+				height: 40px;
+				position: absolute;
+				left: 100px;
+				top: 50%;
+				margin-top: -20px;
+				background: #000;
+				cursor: pointer;
+				line-height: 40px;
+				text-align: center;
+				font-weight: bold;
+				font-family: '黑体';
+				font-size: 30px;
+				color: #fff;
+				/*透明度*/
+				opacity: 0.5;
+				border: 1px solid #fff;
+			}
+			
+			.xiang ol li.current {
+				background-color: #6495ED;
+			}
+			
+			#you {
+				width: 40px;
+				height: 40px;
+				position: absolute;
+				right: 100px;
+				top: 50%;
+				margin-top: -20px;
+				background: #000;
+				cursor: pointer;
+				line-height: 40px;
+				text-align: center;
+				font-weight: bold;
+				font-family: '黑体';
+				font-size: 30px;
+				color: #fff;
+				/*透明度*/
+				opacity: 0.5;
+				border: 1px solid #fff;
+			}
+			
+			#zz {
+				display: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="box">
+			<div class="xiang">
+				<!--// 存放图片-->
+				<ul>
+					<li>
+						<a href="#"><img src="img/下载.png" /></a>
+					</li>
+					<li>
+						<a href="#"><img src="img/tt1.jpg" /></a>
+					</li>
+					<li>
+						<a href="#"><img src="img/wallhaven-655187.png" /></a>
+					</li>
+					<li>
+						<a href="#"><img src="img/wallhaven-655725.jpg" /></a>
+					</li>
+					<li>
+						<a href="#"><img src="img/wallhaven-656580.png" /></a>
+					</li>
+				</ul>
+				<ol>
+
+				</ol>
+
+			</div>
+			<div id="zz">
+				<div id="left">
+					&lt;
+				</div>
+				<div id="you">
+					&gt;
+				</div>
+			</div>
+		</div>
+		<script src="js/属性调用.js"></script>
+		<script>
+			//获取最外面的div
+			var box = myF("box");
+			//获取相框
+			var obj = box.children[0];
+			//获取相框的宽度
+			var imgwidth = obj.offsetWidth;
+			//获取ul
+			var ulobj = obj.children[0];
+			//获取ul中所有标签
+			var list = ulobj.children;
+			//获取ol标签
+			var olobj = obj.children[1];
+			//获取左右标签
+			var zuo = myF("zz");
+
+			var ptt = 0;
+
+			//创建显示按钮
+			for(var i = 0; i < list .length; i++) {
+				//创建ol中li 标签
+				var liobj = document.createElement("li");
+				olobj.appendChild(liobj);
+				liobj.innerHTML = (i + 1);
+				//在标签上自定义一个属性 存储索引
+				liobj.setAttribute("index", i)
+				//鼠标移入事件
+				liobj.onmouseover = function() {
+					//遍历循环
+					for(var i = 0; i < olobj.children.length; i++) {
+						//先把所有的背景颜色干掉
+						olobj.children[i].removeAttribute("class");
+					}
+					//获取当前按钮为背景颜色
+					this.className = "current";
+					//获取当前自定义索引值
+					ptt = this.getAttribute("index");
+					animate(ulobj, -ptt * imgwidth);
+				}
+			}
+			//设置ol中第一个li的 颜色
+			olobj.children[0].className = "current";
+
+			//克隆ul中第一个li 加入ul中最后
+			ulobj.appendChild(ulobj.children[0].cloneNode(true));
+			//设置动画
+			var time=setInterval(youan,4000);
+
+			//鼠标移入显示左右按钮
+			box.onmouseover = function() {
+				zuo.style.display = "block";
+				//清除动画
+				clearInterval(time);
+
+			};
+			//鼠标移出隐藏按钮
+			box.onmouseout = function() {
+				zuo.style.display = "none";
+				//加入动画
+				time=setInterval(youan,4000);
+			};
+
+			//点击右边按钮
+			myF("you").onclick = youan;
+			function youan() {
+				//当显示为第五张图片时
+				if(ptt == list.length - 1) {
+					ptt = 0;
+					//回到最开始的位置
+					ulobj.style.left = 0 + "px";
+				}
+				//显示下一张图片
+				ptt++;
+				animate(ulobj, -ptt * imgwidth);
+				//显示为第五张图片
+				if(ptt == list.length - 1) {
+					//第五个按钮颜色干掉 显示第一个按钮
+					olobj.children[olobj.children.length - 1].className = "";
+					//第一个按钮显示为背景颜色
+					olobj.children[0].className = "current";
+				} else {
+					//干掉所有的按钮颜色
+					for(var i = 0; i < olobj.children.length; i++) {
+						olobj.children[i].removeAttribute("class");
+					}
+					//显示当前按钮颜色
+					olobj.children[ptt].className = "current";
+				}
+			};
+
+			//左边按钮
+			myF("left").onclick = function() {
+				//当在一张图片的时候
+				if(ptt == 0) {
+					ptt = 5;
+					//回到显示最后一张图片
+					ulobj.style.left = -ptt * imgwidth + "px";
+				}
+				//显示前一张
+				ptt--;
+				animate(ulobj, -ptt * imgwidth);
+				//干掉所有按钮颜色
+				for(var i = 0; i < olobj.children.length; i++) {
+					olobj.children[i].removeAttribute("class");
+				}
+				olobj.children[ptt].className = "current";
+			};
+
+			//动画移动函数
+			function animate(element, target) {
+				clearInterval(element.etr);
+				element.etr = setInterval(function() {
+					//获取当前元素的位置
+					var current = element.offsetLeft;
+					var step = 1800;
+					//判断是前进还是后退
+					step = current < target ? step : -step;
+					current += step;
+					//判断当前位置是否达到目标位置
+					if(Math.abs(target - current) > Math.abs(step)) {
+						//元素每次移动距离
+						element.style.left = current + "px";
+					} else {
+						clearInterval(element.etr);
+						//最终元素到目标位置
+						element.style.left = target + "px";
+					}
+				}, 200)
+			}
+		</script>
+	</body>
+
+</html>

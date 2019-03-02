@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>AJAX获取数据</title>
+		<script src="js/template-web.js"></script>
+	</head>
+	<body>
+		
+		<!--<table id="tab"></table>
+		
+		
+		<script id="tem" type="text/template">
+		{{ each cument}}
+			<tr>
+				<td>{{ $value.id }}</td>
+				<td>{{ $value.name }}</td>
+				<td><img src=" {{ $value.icon }}"/></td>
+			</tr>
+		{{ /each }}-->
+		
+		<script>
+			
+			//封装ajax
+			var ajax=function(methods,path,parmeters){
+				//转换成大写 获取字符方式
+				var met=methods.toUpperCase();
+				//将传入的对象转换成数组
+				if(typeof parmeters==='object'){
+					//定义数组存放数据
+					var list=[];
+					for(var key in parmeters){
+						var value=parmeters[key];
+						list.push(key +'='+ value);
+					}
+					parmeters=list.join('&');
+				}
+				var xhr=new XMLHttpRequest();
+				
+				//先判断是什么数据方式
+				if(met==='GET'){
+					//拼接路径
+					path += '?' + parmeters;
+					
+					console.log(path);
+					
+				}
+				
+				console.log(path);
+				
+				xhr.open(met,path);
+				
+				
+				//先定义一个空的 请求体
+				var data=null;
+				//先判断是什么数据方式
+				if(met==='POST'){
+					xhr.setRequestHeader('Content-Type','application//www-from-urlenconed');
+					//如果设置啦请求头 将数据传入请求体
+					data=parmeters;
+				}
+				
+				xhr.send(data);
+				xhr.onreadystatechange=function(){
+					if(this.readyState!=4) return;
+					console.log(this.responseText);
+				}
+			};
+			
+			//调用函数
+			ajax('post','time.json',{ key1:'value1' ,key2:'value2'});
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+//			var xhr=new XMLHttpRequest();
+//			
+//			xhr.open('GET','time.json');
+//			
+//			xhr.setRequestHeader("Content-Type","application//json");
+//			xhr.send();
+//			
+//			xhr.onreadystatechange=function(){
+//				if(this.readyState!=4) return
+//				var res=JSON.parse(this.responseText);
+//				
+//				var contest={cument:res};
+//				
+//				//第一个参数id  第二个参数 数据
+//				var htm=template('tem',contest);
+//				
+//				document.getElementById('tab').innerHTML=htm;
+//				
+//			}
+//			
+		</script>
+	</body>
+</html>

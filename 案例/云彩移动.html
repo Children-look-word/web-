@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#yun{
+				width: 120px;
+				height: 42px;
+				background-color: #7FFFD4;
+				border-radius: 20px;
+				position: absolute;
+				top: 30px;
+				
+			}
+			#navBar{
+				list-style: none;
+				height: 42px;
+				width: 1000px;
+				/*background-color: antiquewhite;*/
+				position: absolute;
+				/*left: 400px;*/
+				top: 100px;
+				font-size: 20px;
+				top: 10px;
+				border-radius: 10px;
+			}
+			li{
+				width: 120px;
+                height: 42px;
+                text-align: center;
+                line-height: 42px;
+                float: left;
+                cursor: pointer;
+			}
+
+		</style>
+		
+	</head>
+
+	<body>
+		<div id="yun"></div>
+		<ul id="navBar">
+			<li>北京校区</li>
+			<li>上海校区</li>
+			<li>广州校区</li>
+			<li>深圳校区</li>
+			<li>武汉校区</li>
+			<li>关于我们</li>
+			<li>联系我们</li>
+			<li>招贤纳士</li>
+		</ul>
+		
+		<script src="js/属性调用.js"></script>
+		<script>
+			//获取ul
+			var nav=myF("navBar");
+			//获取云彩
+			var yun=myF("yun");
+			//获取所有li标签
+			var list=nav.children;
+			
+			for (var i=0;i<list.length;i++) {
+				list[i].onmouseover=tc;
+				list[i].onclick=tcc;
+				list[i].onmouseout=cc;
+			}
+			//鼠标移入事件
+			function tc(){
+				aimate(yun,this.offsetLeft);
+			}
+			var last=0;
+			//鼠标点击事件
+			function tcc(){
+				last=this.offsetLeft;
+			}
+			//鼠标移出事件
+			function cc(){
+				aimate(yun,last);
+			}
+			
+		</script>
+	</body>
+
+</html>

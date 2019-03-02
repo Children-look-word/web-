@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			onload=function(){
+				document.getElementById("but").onclick=function(){
+					//设置页面跳转地址
+					location.href="http://www.baidu.com";
+				};
+			};
+			
+		</script>
+	</head>
+	<body>
+		<input type="button" id="but" value="显示效果" />
+		<script>
+			//地址栏上#之后面的内容
+			console.log(window.location.hash);
+			//主机名及端口号
+			console.log(window.location.host);
+			//主机名
+			console.log(window.location.hostname);
+			//文件的路径--相对路径
+			console.log(window.location.pathname);
+			//端口号
+			console.log(window.location.port);
+			//协议
+			console.log(window.location.protocol);
+			//搜索内容
+			console.log(window.location.search);
+			//通过 userAgent可以判断用户浏览器类型
+			console.log(window.navigator.userAgent);
+			//通过 platform 可以判断浏览器所在的系统平台类型
+			console.log(window.navigator.platform);
+		</script>
+	</body>
+</html>

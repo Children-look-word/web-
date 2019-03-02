@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>坐标</title>
+		<style>
+			canvas {
+				border: 1px solid #999999;
+				display: block;
+				margin: 100px auto;
+			}
+		</style>
+	</head>
+
+	<body>
+		<canvas width="800" height="600"></canvas>
+		<script>
+			var map = function(ctx) {
+				//获取工具
+				this.ctx = ctx || document.querySelector("canvas").getContext("2d");
+				//获取宽度 高度
+				this.w = this.ctx.canvas.width;
+				this.h = this.ctx.canvas.height;
+
+				//获取圆心的坐标
+				this.x0 = this.w / 2 + 100;
+				this.y0 = this.h / 2;
+
+				//圆的半径
+				this.radius = 150;
+				//线伸出去的长度
+				this.length = 30;
+				
+				//小矩形的长 宽
+				this.rectw=30;
+				this.recth=16;
+				this.space=20;
+
+			};
+			//获取随机颜色
+			map.prototype.getRandomColor = function() {
+				var r = Math.floor(Math.random() * 256);
+				var g = Math.floor(Math.random() * 256);
+				var b = Math.floor(Math.random() * 256);
+				return "rgb(" + r + "," + g + "," + b + ")";
+			};
+
+			map.prototype.init = function(data) {
+				this.bing(data);
+			};
+
+			//画饼状图
+			map.prototype.bing = function(data) {
+				//将this转给that
+				var that = this;
+				//弧度
+				var angleList = that.radian(data);
+				//其实点为0
+				var startAngle = 0;
+				angleList.forEach(function(item, i) {
+					//当前结束弧度等于下一个起始弧度
+					endAngle = startAngle + item.radin;
+					that.ctx.beginPath();
+					that.ctx.moveTo(that.x0, that.y0);
+					that.ctx.arc(that.x0, that.y0, that.radius, startAngle, endAngle);
+					var color=that.ctx.fillStyle = that.getRandomColor();
+					that.ctx.fill();
+					that.drawLine(startAngle,item.radin,color,item.title);
+					
+					that.drawExplain(i,item.title);
+					//结束弧度等于下一个起始弧度
+					startAngle = endAngle;
+				});
+			};
+
+			//转化为弧度
+			map.prototype.radian = function(data) {
+				var total = 0;
+				//得到总人数
+				data.forEach(function(item, i) {
+					total += item.num;
+				});
+				//转化为弧度
+				data.forEach(function(item, i) {
+					var radin = item.num / total * Math.PI * 2;
+					//把弧度加入到数组中
+					item.radin = radin;
+				});
+				//返回数据
+				return data;
+			};
+			//画标识线
+			map.prototype.drawLine = function(startAngle,radin,color,title) {
+				//斜边的长度
+				var edge = this.radius +this.length;
+				
+				//外面的坐标
+				var outX=this.x0+Math.cos(startAngle+radin/2)*edge;
+				var outY=this.y0+Math.sin(startAngle+radin/2)*edge;
+				this.ctx.beginPath();
+				this.ctx.moveTo(this.x0,this.y0);
+				this.ctx.lineTo(outX,outY);
+				this.ctx.strokeStyle=color;
+				
+				//计算文字的宽度
+				this.ctx.font="16px 微软雅黑"
+				var titleWidth=this.ctx.measureText(title).width;			
+				//判断左右
+				if(outX>this.x0){
+					//左边
+					this.ctx.lineTo(outX+titleWidth,outY);
+					this.ctx.textAlign="left";
+				}else{
+					//右边
+					this.ctx.lineTo(outX-titleWidth,outY);
+					this.ctx.textAlign="right";
+				}
+				this.ctx.stroke();
+				//基于当前文本基线底部对齐
+				this.ctx.textBaseline="bottom"
+				this.ctx.fillText(title,outX,outY);
+
+			};
+			//画说明
+			map.prototype.drawExplain = function(index,title) {
+				//绘制小矩形
+				this.ctx.fillRect(this.space,this.space+index*(this.recth+10),this.rectw,this.recth);
+				//绘制文字
+				this.ctx.beginPath();
+				this.ctx.textAlign="left";
+				this.ctx.textBaseline = 'top';
+        		this.ctx.font = '14px Microsoft YaHei';
+				this.ctx.fillText(title,this.space+this.rectw+10,this.space+index*(this.recth+10));
+				
+			};
+			//数据
+			var data = [{
+				title: "20-25岁",
+				num: 6
+			}, {
+				title: "25-30岁",
+				num: 20
+			}, {
+				title: "35-35岁",
+				num: 10
+			}, {
+				title: "35岁以上",
+				num: 8
+			}, ];
+
+			var hh = new map();
+			hh.init(data);
+		</script>
+	</body>
+
+</html>

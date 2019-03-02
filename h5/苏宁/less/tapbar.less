@@ -1,0 +1,45 @@
+.sn_tapbar{
+    width: 100%;
+    height: 90rem/@baseFontSize;
+    background-color: #fabc09;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    a{
+        position: absolute;
+        top: 0;
+        width: 90rem/@baseFontSize;
+        height: 90rem/@baseFontSize;
+        &.icon_category{
+            left: 0;
+            background: url(../img/icon_category.png) no-repeat center/44rem/@baseFontSize 70rem/@baseFontSize;
+        }
+        &.icon_cart{
+            right: 0;
+            background: url(../img/icon_cart.png) no-repeat center/ 44rem/@baseFontSize 70rem/@baseFontSize;
+        }
+    }
+    form{
+        width:100% ;
+        padding: 0 90rem/@baseFontSize;
+        position: relative;
+        .icon_search{
+            width: 30rem/@baseFontSize;
+            height: 30rem/@baseFontSize;
+            position: absolute;
+            left: 100rem/@baseFontSize;
+            top: 30rem/@baseFontSize;
+            background: url(../img/icon_search.png) no-repeat center/ 27rem/@baseFontSize 28rem/@baseFontSize;
+        }
+        input{
+            width: 100%;
+            height: 60rem/@baseFontSize;
+            margin-top: 15rem/@baseFontSize;
+            border-radius: 10rem/@baseFontSize;
+            font-size: 16rem/@baseFontSize;
+            padding-left: 50rem/@baseFontSize;
+            background-color: rgba(255,255,255,0.3);
+        }
+    }
+}

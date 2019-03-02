@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#but{
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<script>
+          //为任意元素，绑定任意事件，任意的元素，事件的类型，事件处理函数
+//		    function addEventListener(element,type,fn){
+//		    	if(element.addEventListener){
+//		    		element.addEventListener(type,fn,flase);
+//		    	}else if(element.attachEvent){
+//		    		element.attachEvent("on"+type,fn);
+//		    	}else{
+//		    		element["on"+type]=fn;
+//		    	}
+//		    }
+  /***
+   * 总结绑定事件的区别
+   * addEventListener(element,function(){},false); 事件不加ON  IE8不支持
+   * attachEvent(element,function(){}); 事件加ON  IE8支持
+   * 
+   * 相同点：都可以为元素绑定事件
+   * 不同点：
+   * 1.方法名不一样
+   * 2.参数个数不一样
+   * */
+	</script>
+		<input type="button" value="按钮" id="but"  />
+		<script src="js/属性调用.js"></script>
+		
+		<script>
+			document.addEventListener("click",function(){
+				myF("but").style.display="none";
+			},true);
+			myF("but").addEventListener("click",function(){
+				alert("拉开距离");
+			},true);
+		</script>
+	</body>
+</html>

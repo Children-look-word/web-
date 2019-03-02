@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.btu{
+				width: 100%;
+				height: 200px;
+				background-color: cadetblue;
+			}
+			.banner{
+				width: 100%;
+				height: 120px;
+				background-color: aliceblue;
+				margin-top: 40px;
+			}
+			.btu1{
+				width: 100%;
+				height: 1200px;
+				background-color: chartreuse;
+				margin-top: 40px;
+			}
+		</style>
+		<script src="js/jquery-1.12.1.js"></script>
+		<script>
+			$(function(){
+				//设置浏览器滚动事件
+				$(window).scroll(function(){
+					//判断向上卷出去的距离是否大于或等于第一个div
+					if($(this).scrollTop()>=$(".btu").height()){
+						//大于就固定第二个div
+						$(".banner").css("position","fixed");
+						$(".banner").css("top",0);
+						$(".btu1").css("margin-top",$(".banner").height()+80);
+					}else{
+						//就返回到原来的位置
+						$(".banner").css("position","static");
+						$(".btu1").css("margin-top",40);
+					}
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div class="btu"></div>
+		<div class="banner"></div>
+		<div class="btu1"></div>
+	</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script src="js/jquery-1.12.1.js"></script>
+		<script>
+			$.ajax({
+				type:"get",
+				url:"json.php", //地址
+				//用于提交到后端的参数
+				date:{ id:1 , name:"张三" },
+				//设置响应体的类型
+				dateType:"json",
+				async:true,
+				//回调函数  请求成功执行这个函数
+				success:function(res){
+					console.log(res);
+				}
+				//请求失败执行这个函数
+//				error:function(xhr){
+//					console.log(xhr);
+//				}
+				//不管成功还是失败都执行这个函数
+//				complete:function(xhr){
+//					console.log(xhr);
+//				}
+			});
+			$.getJSON("json.php",{ id:1},function(res){
+				console.log(res);
+			});
+
+			//简介写法
+//			$.get(url: String, data: Map, success: Function, dataType: String);
+//			$.post(url: String, data: Map, success: Function, dataType: String);
+		</script>
+		
+		
+		
+		
+		<script>
+			
+			//设置接受的编码格式
+//			header("Content-Type: application/json");
+			
+			//ajax
+			var xhr=new XMLHttpRequest;
+			xhr.open("get","json.php");
+			xhr.send();
+			xhr.onreadystatechange=function(){
+				if(this.readyState!=4){
+					return;
+				}else{
+					console.log(this.responseText);
+				}
+			}
+			
+			
+			
+		</script>
+		
+		
+	</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>AJAX获取数据</title>
+	</head>
+	<body>
+		<table id="text">
+			<tr>
+				<td>用户名</td>
+				<td><input type="text" id="username" /></td>
+			</tr>
+			<tr>
+				<td>密码</td>
+				<td><input type="password" id="password" /></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td id="btu"><button>登录</button></td>
+			</tr>
+		</table>
+		
+		
+		<script>
+			//获取元素
+			var btu=document.getElementById('btu');
+			
+			//获取元素
+			var txtusername=document.getElementById('username');
+			var txtpassword=document.getElementById('password');
+			
+			
+			btu.onclick=function(){
+				
+				//获取输入的数据
+				var username=txtusername.value;
+				var password=txtpassword.value;
+				
+				
+				var xhr=new XMLHttpRequest();
+				xhr.open('POST','json.php');
+				
+				//设置请求头的格式
+				xhr.setRequestHeader("Content-Type","application//www-form-urlenconed");
+				
+				xhr.send(`username=${username}&password=${password}`);
+				
+				xhr.onreadystatechange=function(){
+					if(this.readyState!=4) return;
+					console.log(this.responseText);
+				}
+				
+			}
+			
+			
+			
+		</script>
+	</body>
+</html>

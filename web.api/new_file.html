@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>last.html</title>
+<style>
+</style>
+<script>
+    function show (obj)
+    {
+        var img = document.getElementById ("showimg");
+        img.style.display = "";
+    }
+    function hide ()
+    {
+        document.getElementById ("showimg").style.display = "none";
+    }
+</script>
+</head>
+<body>
+    <img src="img/07-lg.jpg" onmouseover="show(this)" onmouseout="hide()" />
+    <br>
+    <img src="img/reindeer9_1x.png" id="showimg" style="display: none" />
+</body>
+</html>

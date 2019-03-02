@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			img{
+				position: absolute;
+			}
+			body{
+				height: 2000px
+			}
+		</style>
+	</head>
+	<body>
+		<img src="img/05-lg.jpg" id="uu" alt="" />
+		<script src="js/属性调用.js"></script>
+		<script>
+			
+			//兼容代码 IE支持window.event 谷歌火狐支持E
+			document.onmousemove=function(e){
+				//可视区的横坐标
+				myF("uu").style.left=evt.getPageX(e)+"px";
+				//可视区的纵坐标
+				myF("uu").style.top=evt.getPageY(e)+"px";
+			};
+			
+			//把代码放在对象中
+			var evt={
+				
+				// 兼容代码 IE支持window.event 谷歌火狐支持E
+				getEvent:function(evt){
+					return window.event||evt;
+				},
+				//可视区域的横坐标
+				getClientX:function(evt){
+					return this.getEvent(evt).clientX;
+				},
+				//可视区域的纵坐标坐标
+				getClientY:function(evt){
+					return this.getEvent(evt).clientY;
+				},
+				//页面向左卷出去的横坐标
+				getScrollLeft:function(evt){
+					return window.pageXOffset||document.body.scrollLeft||document.documentElement.scrollLeft;
+				},
+				//页面向上卷出去的纵坐标
+				getScrollTop:function(evt){
+					return window.pageYOffset|| document.body.scrollTop||document.documentElement.scrollTop;
+				},
+				//相对于页面移动的横坐标（pageX或者clicentX+scrollX）
+				getPageX:function(evt){
+					return this.getEvent(evt).pageX?this.getEvent(evt).pageX:this.getClientX(evt)+this.getScrollLeft();
+				},
+				//相对于页面移动的纵坐标（pageY或者clicentY+scrollY）
+				getPageY:function(evt){
+					return this.getEvent(evt).pageY?this.getEvent(evt).pageY:this.getClientY(evt)+this.getScrollTop();
+				}
+			};
+			
+			//获取页面滚动事件
+			window.onscroll=function(e){
+				console.log(evt.getScrollTop());
+			}
+			
+			
+		</script>
+	</body>
+</html>

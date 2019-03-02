@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value="按钮" id="but"  />
+		<input type="button" value="解除绑定" id="but2"  />
+		<script src="js/属性调用.js"></script>
+		
+		<script>
+			function f1(){
+				console.log("思科交换机");
+			}
+			//添加点击事件
+			myF("but").addEventListener("click",f1,false);
+			myF("but2").onclick=function(){
+				//解除绑定
+				myF("but").removeEventListener("click",f1,false);
+			};
+			//还有一个  detachEvent() 也是解绑事件 支持 IE8
+		</script>
+		<script>
+          //解绑事件的兼容代码
+		  function removeEventListener(element,type,fnName){
+//		    	if(element.removeEventListener){
+//		    		element.removeEventListener(type,fnName,flase);
+//		    	}else if(element.detachEvent){
+//		    		element.detachEvent("on"+type,fnName);
+//		    	}else{
+//		    		element["on"+type]=null;
+//		    	}
+//		    }
+		</script>
+		
+	</body>
+</html>
