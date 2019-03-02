@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			ol{
+				list-style: none;
+			}
+		</style>
+		<script>
+			//函数模式闭包  函数中又一个函数
+//			function f1(){
+//				var num=10;
+//				function f2(){
+//					console.log(num);
+//				}
+//				f2();
+//			}
+//			f1();
+			
+			//对象模式闭包   函数中有一个对象
+//			function f3(){
+//				var num=10;
+//				var obj={
+//					age:num
+//				}
+//				console.log(obj.age);
+//			}
+//			f3();
+			
+			//函数模式闭包  函数中又一个函数
+			function f1(){
+				var num=10;
+				return function(){
+					console.log(num);
+				}
+			}
+			var ff=f1();
+			ff();
+			
+			//对象模式闭包   函数中有一个对象
+			function f2(){
+				var num=10;
+				return obj={
+					age:num
+				}
+			}
+			var obj=f2();
+			console.log(obj.age);
+			
+			function f3(){
+				var num=10;
+				num++
+				console.log(num);
+			}
+			
+			f3(); //11
+			f3();  //11
+			f3(); //11
+			
+			
+			function f4(){
+				var num=10
+				return function(){
+					num+=2;
+					console.log(num);
+				}
+			}
+			var ff=f4();
+			ff();  //11
+			ff();  //12
+			ff();  //13
+
+			//保护函数内的变量安全
+			//在内存中维持一个变量
+			
+			
+			
+			
+		</script>
+	</head>
+	<body>
+		<ol>
+			<li><input type="button" value="赞(1)" /></li>
+			<li><input type="button" value="赞(1)" /></li>
+			<li><input type="button" value="赞(1)" /></li>
+			<li><input type="button" value="赞(1)" /></li>
+		</ol>
+		<script>
+			//根据标签名字获取元素
+			function tc(name){
+				return document.getElementsByTagName(name);
+			}
+			//闭包缓存数据
+			function f1(){
+				var num=2;
+				return function(){
+					//没点击一次改变value 值
+					this.value="赞("+(num++)+")"
+				}
+			}
+			//获取所有按钮
+			var obj=tc("input");
+			//遍历循环
+			for(var i=0;i<obj.length;i++){
+				//注册点击事件
+				obj[i].onclick=f1();
+			}
+			
+		</script>
+	</body>
+</html>

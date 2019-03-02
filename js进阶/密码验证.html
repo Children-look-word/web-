@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			span {
+				margin-left: 30px;
+				font-size: 12px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<label>QQ</label><input type="text" id="qq" /><span></span></br>
+		<label>电话</label><input type="text" id="iphone" /><span></span></br>
+		<label>邮箱</label><input type="text" id="e-mail" /><span></span></br>
+		<label>邮编</label><input type="text" id="mail" /><span></span></br>
+		<label>姓名</label><input type="text" id="name" /><span></span></br>
+		<script src="js/属性调用.js"></script>
+		<script>
+			ling(myF("qq"), /^\d{5,11}$/);
+			ling(myF("iphone"), /^\d{11}$/);
+			ling(myF("e-mail"), /^[0-9a-zA-Z_.-]+[@][0-9a-zA-Z_.-]+([.][a-zA-Z]+){1,2}$/);
+			ling(myF("mail"), /^\d{6}$/);
+			ling(myF("name"), /^[\u4e00-\u9fa5]{2,6}$/);
+
+			//创建光标离开事件
+			function ling(input, reg) {
+				//文本注册光标离开事件
+				input.onblur = function() {
+					//判断文本是否符合
+					if(reg.test(this.value)) {
+						this.nextElementSibling.innerText="正确了";
+        				this.nextElementSibling.style.color="green";
+					} else {
+						this.nextElementSibling.innerText="啊哈 好玩";
+        				this.nextElementSibling.style.color="red";
+					}
+				}
+			}
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		<script>
+			function person(name,age,sex){
+				this.name=name;
+				this.age=age;
+				this.sex=sex;
+			}
+			person.prototype.saihai=function(){
+				console.log("啊哈哈空格");
+			};
+			function student(name,age,sex,score){
+				//借用person 属性
+				person.call(this,name,age,sex);
+				this.score=score;
+			}
+			
+			//改变原型指向------继承
+			student.prototype=new person();
+			student.prototype.eat=function(){
+				console.log("三季度卡");
+			};
+			//实例对象
+			var stu=new student("小明",20,"男","100分");
+			console.log(stu.name,stu.age,stu.sex,stu.score);
+			stu.saihai();
+			stu.eat();
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

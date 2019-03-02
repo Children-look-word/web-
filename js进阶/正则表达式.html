@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		<script>
+			
+			//输入身份证号码  15位和18位
+//			([1-9][0-9]{14})([1-9]{2}[0-9xX])?
+			
+			//邮箱正则表达式
+//			[0-9a-zA-Z._-]+[@][0-9a-zA-Z_.-]+([.][a-zA-Z]+){1,2}
+			
+			//正则表达式---通过构造函数创建对象
+			var ret=new RegExp(/\d{5}/);
+			var fla=ret.test("我的号码是333");
+			console.log(fla);
+			
+			
+			//正则表达式--字面量方式创建对象
+			var reg=/\d{5}/;
+			var flag=reg.test("我的号码是555555555555");
+			console.log(flag);
+			
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

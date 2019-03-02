@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <script src="js/时间.js"></script>
+    <script>
+      var dt = new Date();
+
+      console.log(dt.getHours());
+      console.log(dt.getMonth());
+      console.log(dt.getMinutes());
+      console.log(dt.getDate());
+      console.log(dt.getFullYear());
+      console.log(dt.getSeconds());
+      console.log(dt.getYear());
+
+      var dr = Date.now(); // 转化成毫秒
+      console.log(dt);
+      console.log(dr);
+      console.log(dt.toLocaleDateString()); //数字格式 日期
+      console.log(dt.toLocaleTimeString()); //数字格式 时间 上午下午
+
+      //事件格式化
+      function getDate(dt) {
+        var year = dt.getFullYear();
+        var month = dt.getMonth() + 1;
+        var day = dt.getDate();
+        var hour = dt.getHours();
+        var minute = dt.getMinutes();
+        var second = dt.getSeconds();
+        month = month < 10 ? "0" + month : month;
+        day = day < 10 ? "0" + day : day;
+        hour = hour < 10 ? "0" + hour : hour;
+        minute = minute < 10 ? "0" + minute : minute;
+        second = second < 10 ? "0" + second : second;
+        return (
+          year +
+          "年" +
+          month +
+          "月" +
+          day +
+          "日  " +
+          hour +
+          ":" +
+          minute +
+          ":" +
+          second
+        );
+      }
+      console.log(getDate(new Date()));
+
+      // string 方法
+      let str = "我喜欢过大海，也喜欢过你";
+      if (str.indexOf("大海") != -1) {
+        // 替换字符串
+        str = str.replace("大海", "蓝天");
+      } else {
+        console.log("没有大海");
+      }
+      console.log(str);
+
+      let stt = "科比:乔丹:麦迪:詹姆斯:戈登:哈登:迈克逊:奥尼尔";
+      // 切割字符串   :为切割符
+      let arr2 = stt.split(":");
+      for (let i = 0; i < arr2.length; i++) {
+        console.log(arr2[i]);
+      }
+
+      //找出一个字符串中指出字母出现的所在索引
+      let tt = "wo will relaxt my dream";
+      let index = 0; //开始的位置
+      let key = "e"; //要找的字母
+      while ((index = tt.indexOf(key, index)) != -1) {
+        console.log(index);
+        index += key.length;
+      }
+
+      //记录一个字符串每个字母出现的次数
+      let tc = "ksajoijsasnoholksjdoihn123hoifhoh";
+      tc = tc.toLocaleLowerCase();
+      //创建一个空对象  字母作为健  次数作为值
+      let obj = {};
+      for (let i = 0; i < tc.length; i++) {
+        let key = tc[i];
+        //判断这个对象有没有
+        if (obj[key]) {
+          obj[key]++;
+        } else {
+          //没有 显示新的字母 并且 为第一次出现
+          obj[key] = 1;
+        }
+      }
+      //遍历对象 显示每个字母出现的次数
+      for (const key in obj) {
+        console.log(key + "这个字母出现啦" + obj[key] + "次");
+      }
+
+
+
+
+	  //找出一个字符串中出现最多的字符 并返回出现最多次数的值
+      function num(str) {
+        let a = {};
+        let b = str.split("");
+        console.log(b);
+        // key为元素   值为个数
+        for (let i = 0; i < b.length; i++) {
+          if (a[b[i]]) {
+            a[b[i]]++;
+          } else {
+            a[b[i]] = 1;
+          }
+        }
+        // 通过比较找出最大的
+        let maxLetter = "";
+        let levelNum = 0;
+        for (const k in a) {
+          if (a[k] > levelNum) {
+            levelNum = a[k];
+            maxLetter = k;
+          }
+        }
+
+        console.log(maxLetter + ":" + levelNum);
+
+        return maxLetter;
+      }
+      let cc = "dafsfsfasfafaqertyyuuiollmmnnbvffvsfsdfqgsafsafgff";
+      num(cc);
+
+      //			var hu={
+      //				name:"名字是成成",
+      //				sex:"性别是男",
+      //				hooby:"喜欢打篮球，看电影听歌",
+      //				height:"一米八",
+      //				weight:"重60千克",
+      //				mao:"非常帅",
+      //				geyan:"生活是一本好的书籍",
+      //				age:"21岁",
+      //			};
+      //			var zh=prompt("请输入你想知道的信息");
+      //			if(hu[zh]){
+      //				console.log(hu[zh]);
+      //			}else{
+      //				console.log("不存在");
+      //			}
+
+      let arry = ["张飞", "关羽", "刘备", "曹操", "赵云", "黄忠", "司马懿"];
+      let sr = arry.join("|");
+      console.log(sr);
+
+      let arr = ["a", "b", "c", "d", "e", "w"];
+      console.log(arr.reverse());
+
+      // 找出大于两千的元素 并删除
+      let arry1 = [2000, 4500, 6300, 1200, 4000];
+
+      let newarry = arry1.filter(function(ele) {
+        return ele > 2000;
+      });
+      console.log(newarry);
+
+      //遍历对象 方法
+      let items = [10, 20, 30];
+
+      items.forEach(function(ele, index) {
+        console.log(ele + "=====" + index);
+      });
+
+      //删除或者插入某一个元素
+      let myClass = ["亚索", "小炮", "剑魔", "鱼人", "金克丝", "梦魇", "螳螂"];
+      // 3是要删除或者添加 的起始位置  2 是要删除的个数
+      myClass.splice(3, 2, "巨魔", "锤石", "拉克丝");
+      console.log(myClass);
+
+      //删除数组中的重复元素
+
+      let arr3 = [
+        "哥哥",
+        "姐姐",
+        "哥哥",
+        "叔叔",
+        "弟弟",
+        "姐姐",
+        "老婆",
+        "舅舅",
+        "叔叔",
+        "弟弟",
+        "妹妹"
+      ];
+      function gt(arr1) {
+        for (let i = 0; i < arr1.length - 1; i++) {
+          for (let j = 1; j < arr1.length; j++) {
+            if (arr1[i] == arr1[j]) {
+              //  索引可能相同 导致 值相同  所以 要当 索引也不相等时 才可以删除
+              if (i != j) {
+                arr1.splice(j, 1);
+              }
+            }
+          }
+        }
+        //弹出最后的数组
+        alert(arr1);
+      }
+      gt(arr3);
+
+      console.log(Array.from([1, 2, 3, 4, 5, 6], x => x * 4));
+
+      let num1 = [1, 2, 3];
+      let num2 = [1, 2, 3];
+      let num3 = [1, 2, 3];
+      console.log(num1.concat(num2, num3));
+    </script>
+  </head>
+  <body></body>
+</html>

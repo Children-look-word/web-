@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.yu0{
+				width: 240px;
+				height: 20px;
+				border: 1px solid #CCCCCC;
+			}
+			.yu1{
+				width: 60px;
+				height: 20px;
+				background-color: red;
+			}
+			.yu2{
+				width: 100px;
+				height: 20px;
+				background-color: yellow;
+			}
+			.yu3{
+				width: 140px;
+				height: 20px;
+				background-color: green;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<input type="text" id="pas" value="" maxlength="16"/>
+		<div>密码强弱</div>
+		<div id="cc" class="yu0">
+		</div>
+		<script src="js/属性调用.js"></script>
+		<script>
+			//获取键盘抬起事件
+			myF("pas").onkeyup=function(){
+				//当输入大于6位数开始判断密码级别
+				if(this.value.length>=6){
+					//密码返回的级别数字
+					var lvl= getlv(this.value);
+					myF("cc").className="yu"+lvl;
+				}else{
+					myF("cc").className="yu0";
+				}
+			}
+			
+			
+			//获取级别 函数
+			function getlv(pas){
+				var lvl=0 //默认级别是
+				//判断密码中有没有数字
+				if(/[0-9]/.test(pas)){
+					lvl++;
+				}
+				//判断密码中有没有字母
+				if(/[a-zA-Z]/.test(pas)){
+					lvl++;
+				}
+				//判断密码有没有特殊字符
+				if(/[^A-Za-z0-9_]/.test(pas)){
+					lvl++;
+				}
+				return lvl;
+			}
+		</script>
+	</body>
+</html>

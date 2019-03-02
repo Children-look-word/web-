@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+//			function createobject(name,age){
+//				
+//				//创建对象
+//				var obj=new object();
+//				//添加属性
+//				obj.name=name;
+//				obj.age=age;
+//				//添加方法
+//				obj.sayhao=function(){
+//					console.log("大海的名字："+obj.name+"它的年龄是："+obj.age+"岁");
+//				};
+//				return obj;
+//			}
+//			//创建对象
+//			var haiHao=createobject("黄海",20);
+//			haiHao.sayhao();
+//			
+//			var haHao=createobject("西伯利亚",18);
+//			haHao.sayhao();
+//			
+//			
+//			//确定对象的类型  instanceof 相当于布尔类型；
+//			console.log(haiHao instanceof object);
+//			console.log(haHao instanceof object);
+			
+//			// 优化对象写法
+			var cheng={
+				tame:"成成",   
+				avg:22,
+				haochi:function() {
+					console.log('我是：'+this.tame);
+				},
+				nianLing:function() {
+					console.log("今年:"+this.avg+"岁");
+				}
+			};
+			cheng.haochi();
+			cheng.nianLing();
+			
+			
+			
+			//遍历对象
+			var obj={
+				name:"林俊杰",
+				age:"24",
+				sex:"男",
+				height:"178",
+				weight:"60"
+			};
+			for( var key in obj){
+				console.log(key+"-------"+obj[key]);
+			}
+
+
+//			
+//			
+//			
+//			function person(name,age){
+//				this.name=name;
+//				this.age=age;
+//				this.play=function(){
+//					console.log("喜欢大海");
+//				};
+//			}
+//			var hh=new person('小红',20);
+//			hh.play();
+//			hh['name']='牛牛';
+//			console.log(hh['name']);
+//			hh['play']();			
+//			;
+//			//值类型传递
+//			function fi(x){
+//				x=100;
+//			}
+//			var num=10;;
+//			fi(num);
+//			console.log(num);//10
+			
+//			//引用类型的传递
+//			var fy={
+//				name:'小程'
+//			};
+//			function fr(fy2){
+//				fy2.name="快乐";
+//			}
+//			console.log(fy.name);//小程
+//			fr(fy);
+//			console.log(fy.name);//快乐
+//			
+//			
+//			
+//			function Liuliu(name,age,salary){
+//				this.name=name;
+//				this.age=age;
+//				this.salary=salary;
+//			}
+//			function gg(liuliu){
+//				liuliu.name="广告";
+//			    liuliu=new Liuliu("改革",19,6000);
+//			    console.log(liuliu.name);  //改革
+//			    console.log(liuliu.age);   //19
+//			}
+//			var q=new Liuliu("美女",22,8000);
+//			console.log(q.name);  //美女
+//			gg(q);
+//			console.log(q.name);  //广告
+//			
+			// 创建电脑对象 
+			function diaNao(color,height,weight,pingpai,xinghao){
+				this.color=color;
+				this.height=height;
+				this.weight=weight;
+				this.pingpai=pingpai;
+				this.xinghao=xinghao;
+				this.kan=function(){
+					console.log("可以看电影");
+				};
+				this.ting=function(){
+					console.log("可以听音乐");
+				};
+				this.da=function(){
+					console.log("可以打游戏");
+				};
+				this.qiao=function(){
+					console.log("可以敲代码");
+				};
+				this.dia=function(){
+					console.log("这电脑颜色是："+this.color+",高"+this.height+"：重"+this.weight+"。是一个"+this.pingpai+"的牌子并且型号是"+this.xinghao);
+					dian.kan(),dian.ting(),dian.da(),dian.qiao();
+				};
+			}
+			//创建自己定义的对象
+			var dian=new diaNao("红色","70cm","30Kg","华硕","sskk6500");
+			dian.dia();
+			
+			var dianNao= {
+				color:"红色",
+				height:"70cm",
+				weight:"30kg",
+				pingPai:"华硕",
+				xingHao:"glkj6500",
+				kan:function() {
+					console.log("可以看电影");
+				},
+				ting:function() {
+					console.log("可以听音乐");
+				},
+				da:function() {
+					console.log("可以打游戏");
+				},
+			    qiao:function() {
+			    	console.log("可以敲代码");
+			    },
+			    din:function() {
+			    	console.log("这电脑颜色是："+this.color+",高"+this.height+"：重"+this.weight+"。是一个"+this.pingPai+"的牌子并且型号是"+this.xingHao);
+			    	dianNao.kan(),dianNao.ting(),dianNao.da(),dianNao.qiao();
+			    }
+			};
+			dianNao.din();
+			
+			
+			
+			function dianNaoObject(color,height,weight,pingPai,xingHao){
+				//创建一个系统对象
+				var obj=new Object();
+				obj.color=color;
+				obj.height=height;
+				obj.weight=weight;
+				obj.pingPai=pingPai;
+				obj.xingHao=xingHao;
+				obj.kan=function() {
+					console.log("可以看电影");
+				};
+				obj.ting=function() {
+					console.log("可以听音乐");
+				};
+				obj.da=function() {
+					console.log("可以打游戏");
+				};
+				obj.qiao=function() {
+					console.log("可以敲代码");
+				};
+				obj.dai=function() {
+					console.log("这电脑颜色是："+obj.color+",高"+obj.height+"：重"+obj.weight+"。是一个"+obj.pingPai+"的牌子并且型号是"+obj.xingHao);
+					dianAo.kan(),dianAo.ting(),dianAo.da(),dianAo.qiao();
+				};
+				return obj;
+			}
+			var dianAo=new dianNaoObject("红色","70cm","30Kg","华硕","sskk6500");
+			dianAo.dai();
+			    
+			
+			
+			//自己定义一个对象   实现系统max的方法
+			function MyMath(){
+				//添加一个方法
+				this.getMath=function(){
+					//假设arguments[0]为最大值
+					var max=arguments[0];
+					for(var i=0;i<arguments.length;i++){
+						if(max<arguments[i]){
+							max=arguments[i];
+						}
+					}
+					return max;
+				};
+			}
+			//实例化对象
+			var mx=new MyMath();
+//			var result=mx.getMath(20,30,60,2,23,4);
+			console.log(mx.getMath(20,30,2,23,4));
+			
+			
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

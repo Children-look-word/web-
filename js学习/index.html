@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script>
+			alert("我爱你");
+			var num1=10;
+			var tum=20;
+			var tem;
+			var num2="我爱你";
+			var num3=true;
+			var undef;
+			var num4=new Object();
+			
+			/*变量的值转换*/
+			num1=num1+tum;
+			tum=num1-tum;
+			num1=num1-tum;
+			console.log(num1,tum);
+			
+			tem=num1;
+			num1=tum;
+			tum=tem;
+			console.log(num1,tum);
+			
+			
+			console.log("kld\kk");
+			/*变量类型转换*/
+			console.log(parseInt('haha'));
+			console.log(parseInt(15));
+			console.log(parseInt(12.56));
+			console.log(parseInt("我愛你"));
+			console.log(parseInt(1.2));
+			console.log(parseInt(12));
+			/*获取变量的类型*/
+			console.log(typeof num2,typeof num1,typeof num3,typeof undef,typeof num4);
+			
+			
+			
+			var year=2016;
+			if(year%4==0&&year%100!=0||year%400==0){
+				console.log("闰年");
+			}else{
+				console.log("平年")
+			}
+			
+			
+			
+			var jilu="d";
+			switch (jilu){
+				case "a":console.log("90到100之间")
+					break;
+				case "b":console.log("80到90之间")
+				    break;
+				case "c":console.log("70到80之间")
+				    break;
+				case "d":console.log("60到70之间")
+				    break;
+				default:console.log("0到59之间")
+					break;
+			}
+//			var usename=prompt("请输入账号");
+//			var password=prompt("请输入密码");
+//			while (usename!="taocc"||password!="123456"){
+//				usename=prompt("请输入账号");
+//				password=prompt("请输入密码");
+//				
+//			}
+			console.log("登录成功");
+			
+			//九九乘法表
+			document.write("<table border='1' cellpadding='0' cellspacing='0'>");
+			for(var i=1;i<=9;i++)/*有多少行*/
+			{
+			document.write("<tr>");
+			    for (var j=1;j<=i;j++)//有多少列
+			    {
+				document.write("<td>");
+			    document.write(i+'*'+j+'='+j*i);
+				document.write("</td>");
+				}
+			document.write("</tr>");
+			}
+			document.write("</table>");
+			//银行利润算法
+			var sum=10000;
+			for(var i=1; i<=5;i++){
+				sum=sum+sum*(3/1000);
+			}
+			document.write(parseInt(sum));
+			document.write("<br />");
+			//斐波那契数列 第十二月的值
+			var s1=1;
+			var s2=1;
+			var sum=0;
+			for(var i=3;i<=12;i++){
+				sum=s1+s2;
+				s1=s2;
+				s2=sum;
+			}
+			document.write(sum);
+			
+			var huoying=["鸣人","撒赖扩大就","离开洒家打开了","斯柯达"];
+			var str="";
+			for(var i=0;i<huoying.length-1;i++){
+				str+=huoying[i]+"|";
+			}
+			console.log(str+huoying[huoying.length-1]);
+			document.write("<br />");
+			
+			
+			//冒泡排序
+			var tao=[12,2,45,1,0,60,24];
+			//循环控制比较轮数
+			for(var i=0;i<tao.length-1;i++)
+			{
+				//循环控制比较次数
+				for(var j=0;j<tao.length-1-i;j++)
+				{
+					if(tao[j]>tao[j+1])
+					{
+						var tc=tao[j];
+						tao[j]=tao[j+1];
+						tao[j+1]=tc;
+					}
+				}
+			}
+			document.write(tao);
+			//1到100不能被7整除的数和
+			function zhengShu(n,m)
+			{
+				var sum=0;
+				for(n=1;n<=m;n++)
+				{
+					if(n%7==0)
+					{
+						continue;
+					}
+					sum+=n;	
+				}
+				return sum;
+			}
+			console.log(zhengShu(1,100))
+			
+//			var sum=0;
+//			var m=100;
+//			for(n=1;n<=m;n++){
+//				if(n%7==0){
+//					continue;
+//				}
+//				sum+=n;
+//			}
+//			console.log(sum);
+            //200到300之间奇数的和
+            var sumJishu=0;
+            for(var i=200;i<=300;i++){
+            	if(i%2==0){
+            		continue;
+            	}
+            	sumJishu+=i;
+            }
+            console.log(sumJishu);
+            
+            //200到300之间第一个能被7整除的数
+            for( var i=200;i<=300;i++)
+            {
+            	if(i%7==0){
+            		break;
+            	}
+            }
+            console.log(i);
+            
+            //求1到100的值，要求跳过各位为3的数
+            var sumGewei=0;
+            for(var i=1;i<=100;i++){
+            	if(i%10==3){
+            		continue;
+            	}
+            	sumGewei+=i;
+            }
+            console.log(sumGewei);
+
+
+
+			// 求两个数中的最大值
+//			function maxtcc(m,n){
+//				var zuida=m;
+//				if(n>zuida){
+//					zuida=n;
+//				}
+//				return zuida;
+//			}
+//			console.log(maxtcc(8,12));
+			// 求两个数中的最大值
+			function maxTc(m,n){
+				return(m>n?m:n);
+			}
+			console.log(maxTc(12,14));
+
+            //求一个数是否是素数
+			function shuSu(m)
+			{
+				for(var i=2;i<m;i++)
+				{
+					if(m%i==0)
+					{
+						return (m+'不是素数');
+					}	
+				}
+				return (m+"是素数");
+			}
+			console.log(shuSu(3));
+
+		</script>
+	</head>
+	<body>
+		<input type="button"  value="按钮" onclick="alert('我你')" />
+		<select id="ddcc">
+			<option >
+				1
+			</option>
+			<option>
+				2
+			</option>
+			<option>
+				3
+			</option>
+			<option>
+				4
+			</option>
+			<option>
+				5
+			</option>
+		</select>
+	</body>
+</html>

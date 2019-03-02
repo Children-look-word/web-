@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+  </head>
+  <body>
+    <script src="js/属性调用.js"></script>
+    <script>
+      //构造函数
+      function student(name, sex, age) {
+        this.name = name;
+        this.age = age;
+        this.sex = sex;
+      }
+
+      //简单的原型写法
+      student.prototype = {
+        //手动添加构造器
+        constructor: student,
+        height: "188",
+        weight: "60",
+        eat: function() {
+          console.log("我要吃好多吃的");
+        },
+        look: function() {
+          console.log("我想看电影");
+        }
+      };
+      //实例化对象
+      var stu = new student("小红", 20, "nan");
+      stu.eat();
+      stu.look();
+
+      console.dir(student);
+      console.dir(stu);
+    </script>
+  </body>
+</html>

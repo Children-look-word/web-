@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			function f1(x,y){
+				console.log((x+y)+"=====+"+this);
+				return "这是函数的返回值";
+			}
+			
+			//apply和 call 是改变this 的指向的
+			
+			//apply 和 call 的调用
+			 var r1=f1.apply(null,[1,2]);//此时 f1中的 this是 window
+			 console.log(r1);
+			 var r2=f1.call(null,1,2);//此时 f1中的 this是 window
+			 console.log(r2);
+			 
+			 var obj={
+			 	sex:"男"
+			 }
+			 var r3=f1.apply(obj,[1,2]);//this是 obj
+			 console.log(r3);
+			 var r4=f1.call(obj,1,2);//this是 obj
+			 console.log(r4);
+			 
+			 
+			 
+			 
+			 //产生随机数
+			 function shoeRandom(){
+			 	this.number=parseInt(Math.random()*10+1);
+			 }
+			 //为原型添加方法
+			 shoeRandom.prototype.show1=function(){
+			 	//改变定时器中的this
+			 	window.setInterval(this.show2.bind(this),1000);
+			 };
+			 //为原型添加方法
+			 shoeRandom.prototype.show2=function(){
+			 	//显示随机数
+			 	console.log(this.number);
+			 };
+			 //创建实例对象
+			 var st=new shoeRandom();
+			 st.show2();
+			 st.show1();
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

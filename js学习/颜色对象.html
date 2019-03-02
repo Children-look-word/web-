@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			
+			/*设置随机选取颜色的大小*/
+			div{
+				width: 300px;
+				height: 200px;
+				background-color: cadetblue;
+				margin: auto auto;
+				text-align: center;	
+				font-family: "微软雅黑";
+				font-size: 20px;
+			}
+
+			
+		</style>
+		<script>
+			
+			
+			
+			//获取一个十六进制的颜色值
+			function getColor(){
+				var str="#";
+				var arr=["0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f"];
+				for(var i=0;i<6;i++){
+					var num=parseInt(Math.random()*16);
+					str+=arr[num];
+				}
+				return str;
+			}
+			console.log(getColor());
+			
+			//  随机选择颜色
+			//页面记载事件
+			window.onload=function(){
+				//在文档中通过ID属性的值查找这个元素（标签），设置该标签的背景颜色
+				document.getElementById("iv").style.backgroundColor=getColor();
+			};
+			
+		</script>
+	</head>
+	<body>
+		<div id="iv">
+			我喜欢大海，也喜欢过你。
+		</div>
+		
+	</body>
+</html>

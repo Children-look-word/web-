@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			
+			//浅拷贝
+			obj1={
+				age:10,
+				sex:"男",
+				car:["法拉利","阿士顿马丁","玛莎拉蒂","迈凯伦","柯尼塞格"]
+			};
+			obj2={};
+			function extend(a,b){
+				for(var key in a){
+					b[key]=a[key];
+				}
+			}
+			extend(obj1,obj2);
+			console.dir(obj1);
+			console.dir(obj2);
+			
+			
+			//深拷贝
+			obj3={
+				age:10,
+				sex:"男",
+				car:["法拉利","阿士顿马丁","玛莎拉蒂","迈凯伦","柯尼塞格"],
+				dog:{
+					name:"大黄",
+					age:3,
+					color:"yellow"	
+				}
+			};
+			obj4={};
+			function exet(a,b){
+				for(var key in a){
+					//先获取对象A中每个属性的值
+					var tem=a[key];
+					//判断对象属性中是否为数组
+					if(tem instanceof Array){
+						//是数组 先定义对象b一个空数组
+						b[key]=[];
+						//调用函数 将对象a中数组的每个属性 一个一个复制到b数组中
+						exet(tem,b[key]);
+					}else if(tem instanceof Object){//判断这个属性值是不是对象
+						//是对象 在b中添加一个属性值 并且这个属性值也是对象
+						b[key]={};
+						//调用该函数 将对象a 中属性值 对象 一个一个的复制到b中
+						exet(tem,b[key]);
+					}else{
+						//如果是普通属性 直接复制到b中
+						b[key]=tem;
+					}
+				}
+			}
+			exet(obj3,obj4);
+			console.dir(obj3);
+			console.dir(obj4);
+			
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
